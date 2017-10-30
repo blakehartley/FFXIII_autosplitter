@@ -381,15 +381,15 @@ split
 		}
 		if(settings["gelatitanSet"] & old.gelatitan == 0 & current.gelatitan != 0)
 		{
-			vars.time0 = current.time + 3000;
+			vars.time0 = current.time + 4000;
 		}
 		if(settings["amblingbellowsSet"] & old.amblingbellows == 0 & current.amblingbellows != 0)
 		{
-			vars.time0 = current.time + 3000;
+			vars.time0 = current.time + 4000;
 		}
 		if(settings["garungatchSet"] & old.garungatch == 0 & current.garungatch != 0)
 		{
-			vars.time0 = current.time + 3000;
+			vars.time0 = current.time + 4000;
 		}
 		if(settings["mushussuSet"] & old.mushussu == 0 & current.mushussu != 0)
 		{
@@ -397,11 +397,11 @@ split
 		}
 		if(settings["vetalaSet"] & old.vetala == 0 & current.vetala != 0)
 		{
-			vars.time0 = current.time + 3000;
+			vars.time0 = current.time + 4000;
 		}
 		if(settings["penanggalanSet"] & old.penanggalan == 0 & current.penanggalan != 0)
 		{
-			vars.time0 = current.time + 3000;
+			vars.time0 = current.time + 4000;
 		}
 		if(settings["dahakaSet"] & old.dahaka == 0 & current.dahaka != 0)
 		{
