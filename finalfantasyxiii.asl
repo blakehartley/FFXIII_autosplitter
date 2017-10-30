@@ -457,10 +457,10 @@ split
 		{
 			vars.time0 = current.time + 3000;
 		}
-		if(old.orphan2 == 0 & current.orphan2 != 0)
-		{
-			vars.time0 = current.time + 3000;
-		}
+	}
+	if(old.orphan2 == 0 & current.orphan2 != 0)
+	{
+		vars.time0 = current.time + 3000;
 	}
 	
 	// Fight split. Wait three seconds and for the battle screen to fade.
