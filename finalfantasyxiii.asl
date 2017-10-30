@@ -10,7 +10,9 @@ state("ffxiiiimg")
 	
 	int datalog			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x2590;
 	int crystogen		: "ffxiiiimg.exe", 0x0242B060, 0x54;
-	//int target			: "ffxiiiimg.exe", 0x0242B060, 0x3C;
+	int crystogenb		: "ffxiiiimg.exe", 0x0242B060, 0x25C;
+	string11 spoil		: "ffxiiiimg.exe", 0x0242B060, 0x70;
+	string11 spoilb		: "ffxiiiimg.exe", 0x0242B060, 0x278;
 	
 	int betaBehemoth	: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33784;
 	int anima			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33DC4;
@@ -32,7 +34,7 @@ state("ffxiiiimg")
 	int vespid			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3392C;
 	int kalavinka		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33864;
 	int reaver			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33C40;
-	int bart1			: "ffxiiiimg.e-xe", 0x00598E18, 0x0, 0x33F54;
+	int bart1			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33F54;
 	int cid				: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33E74;
 	int bahamut			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x340EC;
 	int alexander		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x340DC;
@@ -236,7 +238,7 @@ split
 		{
 			vars.time0 = current.time + 2000;
 		}
-		if(settings["garudaSet"] & old.garuda == 0 & current.garuda != 0)
+		if(settings["garudaSet"] & old.spoilb != "acc_000_001" & current.spoilb == "acc_000_001")
 		{
 			vars.time0 = current.time + 3000;
 		}
@@ -251,8 +253,7 @@ split
 		{
 			vars.chapter = true;
 		}
-		//if(old.crystogen == 0 & current.crystogen == 360)
-		if(settings["dreadnaughtSet"] & old.dreadnaught == 0 & current.dreadnaught != 0)
+		if(settings["dreadnaughtSet"] & old.crystogenb == 0 & current.crystogenb == 360)
 		{
 			vars.time0 = current.time + 3000;
 		}
@@ -297,7 +298,6 @@ split
 		{
 			vars.time0 = current.time + 3000;
 		}
-		//if(settings["ushu2Set"] & old.ushu2 == 0 & current.ushu2 != 0)
 		if(old.crystogen == 0 & current.crystogen == 960)
 		{
 			vars.time0 = current.time + 3000;
@@ -336,8 +336,7 @@ split
 		{
 			vars.time0 = current.time + 3000;
 		}
-		//if(old.target != 194000 & current.target == 194000)
-		if(settings["kalavinkaSet"] & old.kalavinka == 0 & current.kalavinka != 0)
+		if(settings["kalavinkaSet"] & old.spoil != "acc_029_001" & current.spoil == "acc_029_001")
 		{
 			vars.time0 = current.time + 3000;
 		}
