@@ -384,7 +384,7 @@ split
 		}
 		if(settings["amblingbellowsSet"] & old.amblingbellows == 0 & current.amblingbellows != 0)
 		{
-			vars.time0 = current.time + 4000;
+			vars.time0 = current.time + 3000;
 		}
 		if(settings["garungatchSet"] & old.garungatch == 0 & current.garungatch != 0)
 		{
@@ -446,7 +446,7 @@ split
 		}
 		if(settings["tiamatSet"] & old.tiamat == 0 & current.tiamat != 0)
 		{
-			vars.time0 = current.time + 3000;
+			vars.time0 = current.time + 2000;
 		}
 		if(settings["bart3Set"] & old.bart3 == 0 & current.bart3 != 0)
 		{
