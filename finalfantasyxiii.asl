@@ -9,7 +9,7 @@ state("ffxiiiimg")
 	short start			: "ffxiiiimg.exe", 0x004EE224, 0x0;
 	
 	int datalog			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x2590;
-	//int crystogen		: "ffxiiiimg.exe", 0x0242B060, 0x54;
+	int crystogen		: "ffxiiiimg.exe", 0x0242B060, 0x54;
 	//int target			: "ffxiiiimg.exe", 0x0242B060, 0x3C;
 	
 	int betaBehemoth	: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33784;
@@ -297,8 +297,8 @@ split
 		{
 			vars.time0 = current.time + 3000;
 		}
-		//if(old.crystogen == 0 & current.crystogen == 960)
-		if(settings["ushu2Set"] & old.ushu2 == 0 & current.ushu2 != 0)
+		//if(settings["ushu2Set"] & old.ushu2 == 0 & current.ushu2 != 0)
+		if(old.crystogen == 0 & current.crystogen == 960)
 		{
 			vars.time0 = current.time + 3000;
 		}
