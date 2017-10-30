@@ -16,7 +16,7 @@ state("ffxiiiimg")
 	int anima			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33DC4;
 	int manasvin		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33AF4;
 	int alphaBehemoth	: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33844;
-	//int garuda			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3384C;
+	int garuda			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3384C;
 	int shiva			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x340C4;
 	int dreadnaught		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3376C;
 	int odin			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x340BC;
@@ -79,6 +79,7 @@ startup {
 	
 	settings.Add("manasvinSet", false, "Manasvin Warmech", "chapter3");
 	settings.Add("alphaBehemothSet", false, "Alpha Behemoth", "chapter3");
+	settings.Add("garudaSet", false, "Garuda", "chapter3");
 	settings.Add("shivaSet", false, "Shiva", "chapter3");
 	
 	// Chapter 4:
@@ -235,10 +236,10 @@ split
 		{
 			vars.time0 = current.time + 2000;
 		}
-		/*if(settings["garudaSet"] & old.garuda == 0 & current.garuda != 0)
+		if(settings["garudaSet"] & old.garuda == 0 & current.garuda != 0)
 		{
 			vars.time0 = current.time + 3000;
-		}*/
+		}
 		if(settings["shivaSet"] & old.shiva == 0 & current.shiva != 0)
 		{
 			vars.time0 = current.time + 3000;
