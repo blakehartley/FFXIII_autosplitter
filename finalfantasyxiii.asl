@@ -393,7 +393,7 @@ split
 		}
 		if(settings["mushussuSet"] & old.mushussu == 0 & current.mushussu != 0)
 		{
-			vars.time0 = current.time + 3000;
+			vars.time0 = current.time + 4000;
 		}
 		if(settings["vetalaSet"] & old.vetala == 0 & current.vetala != 0)
 		{
