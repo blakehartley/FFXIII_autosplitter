@@ -1,8 +1,9 @@
 state("ffxiiiimg")
 {
 	short load : 0x02426A4C, 0x2E8;
-	short pause: 0x02426A4C, 0x85C;
+	//short load : "ffxiiiimg.exe", 0x00AAC964, 0x4;
 	//short load: 0x02426A14, 0x318;
+	short pause: 0x02426A4C, 0x85C;
 	short saveScreen: 0x0242B5F0, 0x118;
 	//int split: 0x02431284;
 	//int start: 0x02431284;
@@ -11,10 +12,12 @@ state("ffxiiiimg")
 	int datalog			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x2590;
 	int crystogen		: "ffxiiiimg.exe", 0x0242B060, 0x54;
 	int crystogenb		: "ffxiiiimg.exe", 0x0242B060, 0x25C;
-	string11 spoil		: "ffxiiiimg.exe", 0x0242B060, 0x70;
-	string11 spoilb		: "ffxiiiimg.exe", 0x0242B060, 0x278;
+	string16 spoil		: "ffxiiiimg.exe", 0x0242B060, 0x70;
+	string16 spoilb		: "ffxiiiimg.exe", 0x0242B060, 0x278;
 	
+	int pantheron		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3370C;
 	int betaBehemoth	: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33784;
+	int myrmidon		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33B64;
 	int anima			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33DC4;
 	int manasvin		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33AF4;
 	int alphaBehemoth	: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33844;
@@ -22,9 +25,12 @@ state("ffxiiiimg")
 	int shiva			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x340C4;
 	int dreadnaught		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3376C;
 	int odin			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x340BC;
+	int silverLobo		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33714;
+	int crawler			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33A04;
 	int feralBehemoth	: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3377C;
 	int aster			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x339B4;
 	int enkienlil		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33EAC;
+	int orion			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33794;
 	int ushu1			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x337AC;
 	int ushu2			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x337A4;
 	int havoc			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x337BC;
@@ -33,11 +39,12 @@ state("ffxiiiimg")
 	int flanborg		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3395C;
 	int vespid			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3392C;
 	int kalavinka		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33864;
-	int reaver			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33C40;
+	int reaver			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33C3C;
 	int bart1			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33F54;
 	int cid				: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33E74;
 	int bahamut			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x340EC;
 	int alexander		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x340DC;
+	int pudding			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33734;
 	int hecatoncheir	: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x340E4;
 	int gelatitan		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3407C;
 	int amblingbellows	: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3405C;
@@ -47,6 +54,7 @@ state("ffxiiiimg")
 	int penanggalan		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3406C;
 	int dahaka			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33DEC;
 	int bart2			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33F84;
+	int bulwarker		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33A6C;
 	int proudclad1		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33B8C;
 	int adamanchelid	: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33D04;
 	int proudclad2		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33B84;
@@ -67,7 +75,11 @@ startup {
 	settings.Add("chapter1", true, "Chapter 1");
 	settings.SetToolTip("chapter1", "Split at the end of Chapter 1.");
 	
+	settings.Add("manasvin0Set", false, "Manasvin Warmech", "chapter1");
+	settings.Add("pantheronSet", false, "Pantheron", "chapter1");
+	settings.Add("marauderSet", false, "PSICOM Marauder", "chapter1");
 	settings.Add("betaBehemothSet", false, "Beta Behemoth", "chapter1");
+	settings.Add("myrmidonSet", false, "Myrmidon", "chapter1");
 	
 	// Chapter 2:
 	settings.Add("chapter2", true, "Chapter 2");
@@ -95,7 +107,11 @@ startup {
 	settings.Add("chapter5", true, "Chapter 5");
 	settings.SetToolTip("chapter5", "Split at the end of Chapter 5.");
 	
-	settings.Add("feralBehemothSet", false, "Feral Behemoth", "chapter5");
+	settings.Add("silverLoboSet", false, "Silver Lobos", "chapter5");
+	settings.Add("crawlerSet", false, "Crawler x4", "chapter5");
+	settings.Add("feralBehemothSet", false, "Feral Behemoth 1", "chapter5");
+	settings.Add("crawler10Set", false, "Crawler x10", "chapter5");
+	settings.Add("feralBehemoth2Set", false, "Feral Behemoth 2", "chapter5");
 	settings.Add("asterSet", false, "Aster Protoflorian", "chapter5");
 	
 	// Chapter 6:
@@ -108,6 +124,7 @@ startup {
 	settings.Add("chapter7", true, "Chapter 7");
 	settings.SetToolTip("chapter7", "Split at the end of Chapter 7.");
 	
+	settings.Add("orionSet", false, "Orion", "chapter7");
 	settings.Add("ushu1Set", false, "Ushumgal Subjugator 1", "chapter7");
 	settings.Add("ushu2Set", false, "Ushumgal Subjugator 2", "chapter7");
 	settings.Add("havocSet", false, "Havoc Skytank", "chapter7");
@@ -126,6 +143,9 @@ startup {
 	settings.Add("flanborgSet", false, "Flanborg and Flanitor", "chapter9");
 	settings.Add("vespidSet", false, "Thermadon and Vespid Soldier", "chapter9");
 	settings.Add("kalavinkaSet", false, "Kalavinka Striker", "chapter9");
+	settings.Add("bridge1Set", false, "Bridge 1", "chapter9");
+	settings.Add("bridge2Set", false, "Bridge 2", "chapter9");
+	settings.Add("bridge3Set", false, "Bridge 3", "chapter9");
 	settings.Add("reaverSet", false, "Bridge 4", "chapter9");
 	settings.Add("bart1Set", false, "Barthandelus 1", "chapter9");
 	
@@ -141,6 +161,7 @@ startup {
 	settings.SetToolTip("chapter11", "Split at the end of Chapter 11.");
 	
 	settings.Add("alexanderSet", false, "Alexander", "chapter11");
+	settings.Add("puddingSet", false, "Rust Puddings", "chapter11");
 	settings.Add("hecatoncheirSet", false, "Hecatoncheir", "chapter11");
 	settings.Add("gelatitanSet", false, "Gelatitan", "chapter11");
 	settings.Add("amblingbellowsSet", false, "Ambling Bellows", "chapter11");
@@ -155,6 +176,7 @@ startup {
 	settings.Add("chapter12", true, "Chapter 12");
 	settings.SetToolTip("chapter12", "Split at the end of Chapter 12.");
 	
+	settings.Add("bulwarkerSet", false, "Bulwarker", "chapter12");
 	settings.Add("proudclad1Set", false, "Proudclad 1", "chapter12");
 	settings.Add("adamanchelidSet", false, "Adamanchelid", "chapter12");
 	settings.Add("proudclad2Set", false, "Proudclad 2", "chapter12");
@@ -208,7 +230,23 @@ split
 {
 	if(settings["chapter1"] & current.datalog <= 70)
 	{
+		if(settings["manasvin0Set"] & old.crystogenb == 0 & current.crystogenb == 7)
+		{
+			vars.time0 = current.time + 2000;
+		}
+		if(settings["pantheronSet"] & old.crystogen != 6 & current.crystogen == 6)
+		{
+			vars.time0 = current.time + 2000;
+		}
+		if(settings["marauderSet"] & old.spoil != "material_j046" & current.spoil == "material_j046")
+		{
+			vars.time0 = current.time + 2000;
+		}
 		if(settings["betaBehemothSet"] & old.betaBehemoth == 0 & current.betaBehemoth != 0)
+		{
+			vars.time0 = current.time + 2000;
+		}
+		if(settings["myrmidonSet"] & old.myrmidon == 0 & current.myrmidon != 0)
 		{
 			vars.time0 = current.time + 2000;
 		}
@@ -232,7 +270,7 @@ split
 		}
 		if(settings["manasvinSet"] & old.manasvin == 0 & current.manasvin != 0)
 		{
-			vars.time0 = current.time + 3000;
+			vars.time0 = current.time + 2000;
 		}
 		if(settings["alphaBehemothSet"] & old.alphaBehemoth == 0 & current.alphaBehemoth != 0)
 		{
@@ -268,9 +306,25 @@ split
 		{
 			vars.chapter = true;
 		}
+		if(settings["silverLoboSet"] & old.silverLobo == 0 & current.silverLobo != 0)
+		{
+			vars.time0 = current.time + 4000;
+		}
+		if(settings["crawlerSet"] & old.crawler == 0 & current.crawler != 0)
+		{
+			vars.time0 = current.time + 4000;
+		}
 		if(settings["feralBehemothSet"] & old.feralBehemoth == 0 & current.feralBehemoth != 0)
 		{
 			vars.time0 = current.time + 3000;
+		}
+		if(settings["crawler10Set"] & old.crystogen != 260 & current.crystogen == 260)
+		{
+			vars.time0 = current.time + 4000;
+		}
+		if(settings["feralBehemoth2Set"] & old.spoil != "key_shop_07" & current.spoil == "key_shop_07")
+		{
+			vars.time0 = current.time + 4000;
 		}
 		if(settings["asterSet"] & old.aster == 0 & current.aster !=0)
 		{
@@ -294,11 +348,15 @@ split
 		{
 			vars.chapter = true;
 		}
+		if(settings["orionSet"] & old.orion == 0 & current.orion != 0)
+		{
+			vars.time0 = current.time + 3000;
+		}
 		if(settings["ushu1Set"] & old.ushu1 == 0 & current.ushu1 != 0)
 		{
 			vars.time0 = current.time + 3000;
 		}
-		if(old.crystogen == 0 & current.crystogen == 960)
+		if(settings["ushu2Set"] & old.crystogen == 0 & current.crystogen == 960)
 		{
 			vars.time0 = current.time + 3000;
 		}
@@ -340,6 +398,18 @@ split
 		{
 			vars.time0 = current.time + 3000;
 		}
+		if(settings["bridge1Set"] & old.crystogen != 602 & current.crystogen == 602)
+		{
+			vars.time0 = current.time + 4000;
+		}
+		if(settings["bridge2Set"] & old.crystogen != 707 & current.crystogen == 707)
+		{
+			vars.time0 = current.time + 4000;
+		}
+		if(settings["bridge3Set"] & old.crystogen != 525 & current.crystogen == 525)
+		{
+			vars.time0 = current.time + 4000;
+		}
 		if(settings["reaverSet"] & old.reaver == 0 & current.reaver != 0)
 		{
 			vars.time0 = current.time + 4000;
@@ -373,6 +443,10 @@ split
 		if(settings["alexanderSet"] & old.alexander == 0 & current.alexander != 0)
 		{
 			vars.time0 = current.time + 3000;
+		}
+		if(settings["puddingSet"] & old.pudding == 0 & current.pudding != 0)
+		{
+			vars.time0 = current.time + 4000;
 		}
 		if(settings["hecatoncheirSet"] & old.hecatoncheir == 0 & current.hecatoncheir != 0)
 		{
@@ -416,6 +490,10 @@ split
 		if(settings["chapter11"] & old.datalog <= 740)
 		{
 			vars.chapter = true;
+		}
+		if(settings["bulwarkerSet"] & old.bulwarker == 0 & current.bulwarker != 0)
+		{
+			vars.time0 = current.time + 3000;
 		}
 		if(settings["proudclad1Set"] & old.proudclad1 == 0 & current.proudclad1 != 0)
 		{
