@@ -12,40 +12,48 @@ state("ffxiiiimg")
 	int datalog			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x2590;
 	int crystogen		: "ffxiiiimg.exe", 0x0242B060, 0x54;
 	int crystogenb		: "ffxiiiimg.exe", 0x0242B060, 0x25C;
+	int target			: "ffxiiiimg.exe", 0x0242B060, 0x3C;
 	string16 spoil		: "ffxiiiimg.exe", 0x0242B060, 0x70;
+	string16 spoil2		: "ffxiiiimg.exe", 0x0242B060, 0x88;
 	string16 spoilb		: "ffxiiiimg.exe", 0x0242B060, 0x278;
 	
 	int pantheron		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3370C;
 	int betaBehemoth	: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33784;
 	int myrmidon		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33B64;
-	int anima			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33DC4;
+	//int anima			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33DC4;
 	int manasvin		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33AF4;
 	int alphaBehemoth	: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33844;
-	int garuda			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3384C;
-	int shiva			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x340C4;
-	int dreadnaught		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3376C;
-	int odin			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x340BC;
+	//int garuda			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3384C;
+	//int shiva			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x340C4;
+	int pulsesold		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x338C4;
+	//int dreadnaught		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3376C;
+	//int odin			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x340BC;
+	int uhlan			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33A64;
+	int bomb			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x338F4;
 	int silverLobo		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33714;
 	int crawler			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33A04;
 	int feralBehemoth	: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3377C;
-	int aster			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x339B4;
+	int velocycle		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33A84;
+	//int aster			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x339B4;
 	int enkienlil		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33EAC;
 	int orion			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33794;
 	int ushu1			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x337AC;
 	int ushu2			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x337A4;
+	int sniper			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33B3C;
+	int bombardier		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33964;
 	int havoc			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x337BC;
 	int midlight		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33B0C;
-	int brynhildr		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x340D4;
+	//int brynhildr		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x340D4;
 	int flanborg		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3395C;
 	int vespid			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3392C;
-	int kalavinka		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33864;
+	//int kalavinka		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33864;
 	int reaver			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33C3C;
 	int bart1			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33F54;
 	int cid				: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33E74;
-	int bahamut			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x340EC;
-	int alexander		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x340DC;
+	//int bahamut			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x340EC;
+	//int alexander		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x340DC;
 	int pudding			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33734;
-	int hecatoncheir	: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x340E4;
+	//int hecatoncheir	: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x340E4;
 	int gelatitan		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3407C;
 	int amblingbellows	: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3405C;
 	int garungatch		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33FEC;
@@ -71,6 +79,8 @@ state("ffxiiiimg")
 }
 
 startup {
+	settings.Add("lasthit", false, "Split on last hit");
+	
 	// Chapter 1:
 	settings.Add("chapter1", true, "Chapter 1");
 	settings.SetToolTip("chapter1", "Split at the end of Chapter 1.");
@@ -80,17 +90,24 @@ startup {
 	settings.Add("marauderSet", false, "PSICOM Marauder", "chapter1");
 	settings.Add("betaBehemothSet", false, "Beta Behemoth", "chapter1");
 	settings.Add("myrmidonSet", false, "Myrmidon", "chapter1");
+	settings.Add("enforcerSet", false, "PSICOM Warden & Enforcer x2", "chapter1");
 	
 	// Chapter 2:
 	settings.Add("chapter2", true, "Chapter 2");
 	settings.SetToolTip("chapter2", "Split at the end of Chapter 2.");
 	
+	settings.Add("pantheron2Set", false, "Pantheron", "chapter2");
+	settings.Add("pantheron3Set", false, "Pantheron x2", "chapter2");
+	settings.Add("pantheronZwergSet", false, "Pantheron & Zwerg Scandroid x2", "chapter2");
+	settings.Add("ghoul3Set", false, "Ghoul x3", "chapter2");
 	settings.Add("animaSet", false, "Anima", "chapter2");
 	
 	// Chapter 3:
 	settings.Add("chapter3", true, "Chapter 3");
 	settings.SetToolTip("chapter3", "Split at the end of Chapter 3.");
 	
+	settings.Add("ghast3Set", false, "Ghast x3", "chapter3");
+	settings.Add("warden7Set", false, "PSICOM Warden x7", "chapter3");
 	settings.Add("manasvinSet", false, "Manasvin Warmech", "chapter3");
 	settings.Add("alphaBehemothSet", false, "Alpha Behemoth", "chapter3");
 	settings.Add("garudaSet", false, "Garuda", "chapter3");
@@ -100,8 +117,18 @@ startup {
 	settings.Add("chapter4", true, "Chapter 4");
 	settings.SetToolTip("chapter4", "Split at the end of Chapter 4.");
 	
+	settings.Add("pantheron4Set", false, "Pantheron x4", "chapter4");
+	settings.Add("watchdroneSet", false, "Pulsework Soldier and Watchdrones", "chapter4");
+	settings.Add("birdsSet", false, "Succubus & Incubus x2", "chapter4");
+	settings.Add("gunnerSet", false, "PSICOM Tracker & Gunners", "chapter4");
+	settings.Add("trackerSet", false, "PSICOM Tracker x2", "chapter4");
 	settings.Add("dreadnaughtSet", false, "Dreadnaught", "chapter4");
 	settings.Add("odinSet", false, "Odin", "chapter4");
+	settings.Add("uhlanSet", false, "Uhlan x2", "chapter4");
+	settings.Add("bombsold1Set", false, "Pulsework Soldier & Bomb", "chapter4");
+	settings.Add("soldiersSet", false, "Pulsework Soldier x2", "chapter4");
+	settings.Add("bombsold2Set", false, "Bomb & Pulsework Soldier", "chapter4");
+	settings.Add("bombsSet", false, "Bomb x2", "chapter4");
 	
 	// Chapter 5:
 	settings.Add("chapter5", true, "Chapter 5");
@@ -112,6 +139,7 @@ startup {
 	settings.Add("feralBehemothSet", false, "Feral Behemoth 1", "chapter5");
 	settings.Add("crawler10Set", false, "Crawler x10", "chapter5");
 	settings.Add("feralBehemoth2Set", false, "Feral Behemoth 2", "chapter5");
+	settings.Add("velocycleSet", false, "Milvus Velocycle", "chapter5");
 	settings.Add("asterSet", false, "Aster Protoflorian", "chapter5");
 	
 	// Chapter 6:
@@ -127,6 +155,8 @@ startup {
 	settings.Add("orionSet", false, "Orion", "chapter7");
 	settings.Add("ushu1Set", false, "Ushumgal Subjugator 1", "chapter7");
 	settings.Add("ushu2Set", false, "Ushumgal Subjugator 2", "chapter7");
+	settings.Add("sniperSet", false, "PSICOM Aerial Snipers & Scavengers", "chapter7");
+	settings.Add("bombardierSet", false, "PSICOM Bombardier & Predators", "chapter7");
 	settings.Add("havocSet", false, "Havoc Skytank", "chapter7");
 	
 	// Chapter 8:
@@ -140,13 +170,15 @@ startup {
 	settings.Add("chapter9", true, "Chapter 9");
 	settings.SetToolTip("chapter9", "Split at the end of Chapter 9.");
 	
-	settings.Add("flanborgSet", false, "Flanborg and Flanitor", "chapter9");
-	settings.Add("vespidSet", false, "Thermadon and Vespid Soldier", "chapter9");
+	settings.Add("palam1Set", false, "PSICOM Raider & Infiltrators 1", "chapter9");
+	settings.Add("palam2Set", false, "PSICOM Raider & Infiltrators 2", "chapter9");
+	settings.Add("flanborgSet", false, "Flanborg & Flanitor", "chapter9");
+	settings.Add("vespidSet", false, "Thermadon & Vespid Soldier", "chapter9");
 	settings.Add("kalavinkaSet", false, "Kalavinka Striker", "chapter9");
-	settings.Add("bridge1Set", false, "Bridge 1", "chapter9");
-	settings.Add("bridge2Set", false, "Bridge 2", "chapter9");
-	settings.Add("bridge3Set", false, "Bridge 3", "chapter9");
-	settings.Add("reaverSet", false, "Bridge 4", "chapter9");
+	settings.Add("bridge1Set", false, "PSICOM Destroyer & Infiltrators", "chapter9");
+	settings.Add("bridge2Set", false, "PSICOM Destroyer & Dragoons", "chapter9");
+	settings.Add("bridge3Set", false, "Thermadon & PSICOM Raiders", "chapter9");
+	settings.Add("reaverSet", false, "PSICOM Reaver & Dragoons", "chapter9");
 	settings.Add("bart1Set", false, "Barthandelus 1", "chapter9");
 	
 	// Chapter 10:
@@ -177,6 +209,7 @@ startup {
 	settings.SetToolTip("chapter12", "Split at the end of Chapter 12.");
 	
 	settings.Add("bulwarkerSet", false, "Bulwarker", "chapter12");
+	settings.Add("behemothKingSet", false, "Behemoth King", "chapter12");
 	settings.Add("proudclad1Set", false, "Proudclad 1", "chapter12");
 	settings.Add("adamanchelidSet", false, "Adamanchelid", "chapter12");
 	settings.Add("proudclad2Set", false, "Proudclad 2", "chapter12");
@@ -185,7 +218,7 @@ startup {
 	settings.Add("chapter13", true, "Chapter 13");
 	settings.SetToolTip("chapter13", "Split at the end of Chapter 13.");
 	
-	settings.Add("bandersnatchSet", false, "Jabberwocky and Bandersnatch", "chapter13");
+	settings.Add("bandersnatchSet", false, "Jabberwocky & Bandersnatch", "chapter13");
 	settings.Add("wladislausSet", false, "Wladislaus", "chapter13");
 	settings.Add("tiamatSet", false, "Tiamat", "chapter13");
 	settings.Add("bart3Set", false, "Barthandelus 3", "chapter13");
@@ -234,7 +267,7 @@ split
 		{
 			vars.time0 = current.time + 2000;
 		}
-		if(settings["pantheronSet"] & old.crystogen != 6 & current.crystogen == 6)
+		if(settings["pantheronSet"] & old.pantheron == 0 & current.pantheron != 0)
 		{
 			vars.time0 = current.time + 2000;
 		}
@@ -248,7 +281,11 @@ split
 		}
 		if(settings["myrmidonSet"] & old.myrmidon == 0 & current.myrmidon != 0)
 		{
-			vars.time0 = current.time + 2000;
+			vars.time0 = current.time + 3000;
+		}
+		if(settings["enforcerSet"] & old.target != 33000 & current.target == 33000)
+		{
+			vars.time0 = current.time + 3000;
 		}
 	}
 	else if(settings["chapter2"] & current.datalog <= 145)
@@ -257,9 +294,29 @@ split
 		{
 			vars.chapter = true;
 		}
-		if(settings["animaSet"] & old.anima == 0 & current.anima != 0)
+		if(settings["pantheron2Set"] & old.spoil != "key_shop_06" & current.spoil == "key_shop_06")
 		{
 			vars.time0 = current.time + 3000;
+		}
+		if(settings["pantheron2Set"] & old.spoil2 != "key_shop_06" & current.spoil2 == "key_shop_06")
+		{
+			vars.time0 = current.time + 3000;
+		}
+		if(settings["pantheron3Set"] & old.target != 81000 & current.target == 81000)
+		{
+			vars.time0 = current.time + 4000;
+		}
+		if(settings["pantheronZwergSet"] & old.target != 50000 & current.target == 50000)
+		{
+			vars.time0 = current.time + 4000;
+		}
+		if(settings["ghoul3Set"] & old.target != 42000 & current.target == 42000)
+		{
+			vars.time0 = current.time + 4000;
+		}
+		if(settings["animaSet"] & old.spoil != "acc_053_000" & current.spoil == "acc_053_000")
+		{
+			vars.time0 = current.time + 1800;
 		}
 	}
 	else if(settings["chapter3"] & current.datalog <= 195)
@@ -268,19 +325,27 @@ split
 		{
 			vars.chapter = true;
 		}
+		if(settings["ghast3Set"] & old.target != 56000 & current.target == 56000)
+		{
+			vars.time0 = current.time + 1800;
+		}
+		if(settings["warden7Set"] & old.crystogen != 21 & current.crystogen == 21)
+		{
+			vars.time0 = current.time + 1800;
+		}
 		if(settings["manasvinSet"] & old.manasvin == 0 & current.manasvin != 0)
 		{
-			vars.time0 = current.time + 2000;
+			vars.time0 = current.time + 1800;
 		}
 		if(settings["alphaBehemothSet"] & old.alphaBehemoth == 0 & current.alphaBehemoth != 0)
 		{
-			vars.time0 = current.time + 2000;
+			vars.time0 = current.time + 2500;
 		}
 		if(settings["garudaSet"] & old.spoilb != "acc_000_001" & current.spoilb == "acc_000_001")
 		{
 			vars.time0 = current.time + 3000;
 		}
-		if(settings["shivaSet"] & old.shiva == 0 & current.shiva != 0)
+		if(settings["shivaSet"] & old.spoil != "key_c_shiva" & current.spoil == "key_c_shiva")
 		{
 			vars.time0 = current.time + 3000;
 		}
@@ -291,13 +356,53 @@ split
 		{
 			vars.chapter = true;
 		}
+		if(settings["pantheron4Set"] & old.target != 32000 & current.target == 32000)
+		{
+			vars.time0 = current.time + 3000;
+		}
+		if(settings["watchdroneSet"] & old.pulsesold == 0 & current.pulsesold != 0)
+		{
+			vars.time0 = current.time + 4000;
+		}
+		if(settings["birdsSet"] & old.crystogen != 47 & current.crystogen == 47)
+		{
+			vars.time0 = current.time + 4000;
+		}
 		if(settings["dreadnaughtSet"] & old.crystogenb == 0 & current.crystogenb == 360)
 		{
 			vars.time0 = current.time + 3000;
 		}
-		if(settings["odinSet"] & old.odin == 0 & current.odin != 0)
+		if(settings["gunnerSet"] & old.crystogen != 64 & current.crystogen == 64)
 		{
 			vars.time0 = current.time + 3000;
+		}
+		if(settings["trackerSet"] & old.crystogen != 16 & current.crystogen == 16)
+		{
+			vars.time0 = current.time + 3000;
+		}
+		if(settings["odinSet"] & old.spoil != "key_c_odin" & current.spoil == "key_c_odin")
+		{
+			vars.time0 = current.time + 3000;
+		}
+		if(settings["uhlanSet"] & old.uhlan == 0 & current.uhlan != 0)
+		{
+			vars.time0 = current.time + 3000;
+		}
+		if(settings["bombsold1Set"] & old.bomb == 0 & current.bomb != 0)
+		{
+			vars.time0 = current.time + 4000;
+		}
+		if(settings["soldiersSet"] & old.crystogen != 87 & current.crystogen == 87)
+		{
+			vars.time0 = current.time + 4000;
+		}
+		if(settings["bombsold2Set"] & old.crystogen != 41 & current.crystogen == 41)
+		{
+			vars.time0 = current.time + 4000;
+		}
+		if(settings["bombsSet"] & old.target != 30000 & current.target == 30000)
+		{
+			vars.time0 = current.time + 4000;
 		}
 	}
 	else if(settings["chapter5"] & current.datalog <= 360)
@@ -326,7 +431,11 @@ split
 		{
 			vars.time0 = current.time + 4000;
 		}
-		if(settings["asterSet"] & old.aster == 0 & current.aster !=0)
+		if(settings["velocycleSet"] & old.velocycle == 0 & current.velocycle != 0)
+		{
+			vars.time0 = current.time + 3000;
+		}
+		if(settings["asterSet"] & old.spoil != "acc_000_002" & current.spoil == "acc_000_002")
 		{
 			vars.time0 = current.time + 3000;
 		}
@@ -360,6 +469,14 @@ split
 		{
 			vars.time0 = current.time + 3000;
 		}
+		if(settings["sniperSet"] & old.sniper == 0 & current.sniper != 0)
+		{
+			vars.time0 = current.time + 3000;
+		}
+		if(settings["bombardierSet"] & old.bombardier == 0 & current.bombardier != 0)
+		{
+			vars.time0 = current.time + 3000;
+		}
 		if(settings["havocSet"] & old.havoc == 0 & current.havoc != 0)
 		{
 			vars.time0 = current.time + 3000;
@@ -375,7 +492,7 @@ split
 		{
 			vars.time0 = current.time + 3000;
 		}
-		if(settings["brynhildrSet"] & old.brynhildr == 0 & current.brynhildr != 0)
+		if(settings["brynhildrSet"] & old.spoil != "key_c_bryn" & current.spoil == "key_c_bryn")
 		{
 			vars.time0 = current.time + 3000;
 		}
@@ -385,6 +502,14 @@ split
 		if(settings["chapter8"] & old.datalog <= 580)
 		{
 			vars.chapter = true;
+		}
+		if(settings["palam1Set"] & old.target != 136000 & current.target == 136000)
+		{
+			vars.time0 = current.time + 3000;
+		}
+		if(settings["palam2Set"] & old.target != 94000 & current.target == 94000)
+		{
+			vars.time0 = current.time + 3000;
 		}
 		if(settings["flanborgSet"] & old.flanborg == 0 & current.flanborg != 0)
 		{
@@ -429,7 +554,7 @@ split
 		{
 			vars.time0 = current.time + 3000;
 		}
-		if(settings["bahamutSet"] & old.bahamut == 0 & current.bahamut != 0)
+		if(settings["bahamutSet"] & old.spoil != "key_c_baha" & current.spoil == "key_c_baha")
 		{
 			vars.time0 = current.time + 3000;
 		}
@@ -440,7 +565,7 @@ split
 		{
 			vars.chapter = true;
 		}
-		if(settings["alexanderSet"] & old.alexander == 0 & current.alexander != 0)
+		if(settings["alexanderSet"] & old.spoil != "key_c_alexa" & current.spoil == "key_c_alexa")
 		{
 			vars.time0 = current.time + 3000;
 		}
@@ -448,7 +573,7 @@ split
 		{
 			vars.time0 = current.time + 4000;
 		}
-		if(settings["hecatoncheirSet"] & old.hecatoncheir == 0 & current.hecatoncheir != 0)
+		if(settings["hecatoncheirSet"] & old.spoil != "key_c_hecat" & current.spoil == "key_c_hecat")
 		{
 			vars.time0 = current.time + 3000;
 		}
@@ -492,6 +617,10 @@ split
 			vars.chapter = true;
 		}
 		if(settings["bulwarkerSet"] & old.bulwarker == 0 & current.bulwarker != 0)
+		{
+			vars.time0 = current.time + 3000;
+		}
+		if(settings["behemothKingSet"] & old.crystogen != 4000 & current.crystogen == 4000)
 		{
 			vars.time0 = current.time + 3000;
 		}
@@ -542,7 +671,15 @@ split
 	
 	// Fight split. Wait three seconds and for the battle screen to fade.
 	//if(current.bover0 == 128 & current.bover1 == 128 & current.time > vars.time0)
-	if(current.time > vars.time0)
+	if(settings["lasthit"])
+	{
+		if(vars.time0 != 4294967295 & current.orphan2 == 0)
+		{
+			vars.time0 = 4294967295;
+			return true;
+		}
+	}
+	else if(current.time > vars.time0)
 	{
 		if(current.bover0 == 128 & current.bover1 == 128)
 		{
