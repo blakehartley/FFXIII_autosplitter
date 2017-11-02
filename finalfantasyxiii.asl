@@ -20,52 +20,30 @@ state("ffxiiiimg")
 	int pantheron		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3370C;
 	int betaBehemoth	: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33784;
 	int myrmidon		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33B64;
-	//int anima			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33DC4;
 	int manasvin		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33AF4;
 	int alphaBehemoth	: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33844;
-	//int garuda			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3384C;
-	//int shiva			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x340C4;
 	int pulsesold		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x338C4;
-	//int dreadnaught		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3376C;
-	//int odin			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x340BC;
 	int uhlan			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33A64;
 	int bomb			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x338F4;
 	int silverLobo		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33714;
 	int crawler			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33A04;
 	int feralBehemoth	: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3377C;
 	int velocycle		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33A84;
-	//int aster			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x339B4;
-	int enkienlil		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33EAC;
 	int orion			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33794;
-	int ushu1			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x337AC;
-	int ushu2			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x337A4;
 	int sniper			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33B3C;
-	int bombardier		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33964;
-	int havoc			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x337BC;
 	int midlight		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33B0C;
-	//int brynhildr		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x340D4;
 	int flanborg		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3395C;
 	int vespid			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3392C;
-	//int kalavinka		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33864;
 	int reaver			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33C3C;
-	int bart1			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33F54;
-	int cid				: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33E74;
-	//int bahamut			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x340EC;
-	//int alexander		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x340DC;
 	int pudding			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33734;
-	//int hecatoncheir	: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x340E4;
 	int gelatitan		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3407C;
 	int amblingbellows	: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3405C;
 	int garungatch		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33FEC;
 	int mushussu		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x34034;
 	int vetala			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33D74;
 	int penanggalan		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3406C;
-	int dahaka			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33DEC;
-	int bart2			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33F84;
 	int bulwarker		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33A6C;
-	int proudclad1		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33B8C;
 	int adamanchelid	: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33D04;
-	int proudclad2		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33B84;
 	int bandersnatch	: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33EBC;
 	int wladislaus		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33ED4;
 	int tiamat			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33B2C;
@@ -170,8 +148,8 @@ startup {
 	settings.Add("chapter9", true, "Chapter 9");
 	settings.SetToolTip("chapter9", "Split at the end of Chapter 9.");
 	
-	settings.Add("palam1Set", false, "PSICOM Raider & Infiltrators 1", "chapter9");
-	settings.Add("palam2Set", false, "PSICOM Raider & Infiltrators 2", "chapter9");
+	settings.Add("palam1Set", false, "PSICOM Raider & Infiltrators", "chapter9");
+	//settings.Add("palam2Set", false, "PSICOM Raider & Infiltrators 2", "chapter9");
 	settings.Add("flanborgSet", false, "Flanborg & Flanitor", "chapter9");
 	settings.Add("vespidSet", false, "Thermadon & Vespid Soldier", "chapter9");
 	settings.Add("kalavinkaSet", false, "Kalavinka Striker", "chapter9");
@@ -185,6 +163,7 @@ startup {
 	settings.Add("chapter10", true, "Chapter 10");
 	settings.SetToolTip("chapter10", "Split at the end of Chapter 10.");
 	
+	settings.Add("pulseKnightSet", false, "Pulsework Knight x2", "chapter10");
 	settings.Add("cidSet", false, "Cid Raines", "chapter10");
 	settings.Add("bahamutSet", false, "Bahamut", "chapter10");
 	
@@ -208,6 +187,7 @@ startup {
 	settings.Add("chapter12", true, "Chapter 12");
 	settings.SetToolTip("chapter12", "Split at the end of Chapter 12.");
 	
+	settings.Add("anavataptaSet", false, "Anavatapta Warmech", "chapter12");
 	settings.Add("bulwarkerSet", false, "Bulwarker", "chapter12");
 	settings.Add("behemothKingSet", false, "Behemoth King", "chapter12");
 	settings.Add("proudclad1Set", false, "Proudclad 1", "chapter12");
@@ -235,6 +215,7 @@ init
 	vars.time0 = 4294967295;
 	vars.chapter = false;
 	vars.startTime = 0;
+	vars.temp = 0;
 }
 
 start
@@ -446,7 +427,7 @@ split
 		{
 			vars.chapter = true;
 		}
-		if(settings["enkienlilSet"] & old.enkienlil == 0 & current.enkienlil != 0)
+		if(settings["enkienlilSet"] & old.spoil != "acc_004_001" & current.spoil == "acc_004_001")
 		{
 			vars.time0 = current.time + 3000;
 		}
@@ -461,9 +442,9 @@ split
 		{
 			vars.time0 = current.time + 3000;
 		}
-		if(settings["ushu1Set"] & old.ushu1 == 0 & current.ushu1 != 0)
+		if(settings["ushu1Set"] & old.spoil != "material_m023" & current.spoil == "material_m023")
 		{
-			vars.time0 = current.time + 3000;
+			vars.time0 = current.time + 2500;
 		}
 		if(settings["ushu2Set"] & old.crystogen == 0 & current.crystogen == 960)
 		{
@@ -473,11 +454,11 @@ split
 		{
 			vars.time0 = current.time + 3000;
 		}
-		if(settings["bombardierSet"] & old.bombardier == 0 & current.bombardier != 0)
+		if(settings["bombardierSet"] & old.crystogen != 160 & current.crystogen == 160)
 		{
-			vars.time0 = current.time + 3000;
+			vars.time0 = current.time + 4000;
 		}
-		if(settings["havocSet"] & old.havoc == 0 & current.havoc != 0)
+		if(settings["havocSet"] & old.spoil != "material_o004" & current.spoil == "material_o004")
 		{
 			vars.time0 = current.time + 3000;
 		}
@@ -503,14 +484,15 @@ split
 		{
 			vars.chapter = true;
 		}
-		if(settings["palam1Set"] & old.target != 136000 & current.target == 136000)
+		if(settings["palam1Set"] & old.crystogen != 384 & current.crystogen == 384)
+		{
+			vars.time0 = current.time + 3000 + vars.temp;
+			vars.temp = 1000;
+		}
+		/*if(settings["palam2Set"] & old.target != 94000 & current.target == 94000)
 		{
 			vars.time0 = current.time + 3000;
-		}
-		if(settings["palam2Set"] & old.target != 94000 & current.target == 94000)
-		{
-			vars.time0 = current.time + 3000;
-		}
+		}*/
 		if(settings["flanborgSet"] & old.flanborg == 0 & current.flanborg != 0)
 		{
 			vars.time0 = current.time + 4000;
@@ -539,7 +521,7 @@ split
 		{
 			vars.time0 = current.time + 4000;
 		}
-		if(settings["bart1Set"] & old.bart1 == 0 & current.bart1 != 0)
+		if(settings["bart1Set"] & old.spoil != "acc_007_000" & current.spoil == "acc_007_000")
 		{
 			vars.time0 = current.time + 3000;
 		}
@@ -550,7 +532,11 @@ split
 		{
 			vars.chapter = true;
 		}
-		if(settings["cidSet"] & old.cid == 0 & current.cid != 0)
+		if(settings["pulseKnightSet"] & old.crystogen != 512 & current.crystogen == 512)
+		{
+			vars.time0 = current.time + 4000;
+		}
+		if(settings["cidSet"] & old.spoil != "acc_036_000" & current.spoil == "acc_036_000")
 		{
 			vars.time0 = current.time + 3000;
 		}
@@ -601,11 +587,11 @@ split
 		{
 			vars.time0 = current.time + 4000;
 		}
-		if(settings["dahakaSet"] & old.dahaka == 0 & current.dahaka != 0)
+		if(settings["dahakaSet"] & old.spoil != "acc_036_001" & current.spoil == "acc_036_001")
 		{
 			vars.time0 = current.time + 3000;
 		}
-		if(settings["bart2Set"] & old.bart2 == 0 & current.bart2 != 0)
+		if(settings["bart2Set"] & old.spoil != "acc_054_000" & current.spoil == "acc_054_000")
 		{
 			vars.time0 = current.time + 3000;
 		}
@@ -616,6 +602,10 @@ split
 		{
 			vars.chapter = true;
 		}
+		if(settings["anavataptaSet"] & old.crystogen != 26000 & current.crystogen == 26000)
+		{
+			vars.time0 = current.time + 3000;
+		}
 		if(settings["bulwarkerSet"] & old.bulwarker == 0 & current.bulwarker != 0)
 		{
 			vars.time0 = current.time + 3000;
@@ -624,7 +614,7 @@ split
 		{
 			vars.time0 = current.time + 3000;
 		}
-		if(settings["proudclad1Set"] & old.proudclad1 == 0 & current.proudclad1 != 0)
+		if(settings["proudclad1Set"] & old.spoil != "material_j044" & current.spoil == "material_j044")
 		{
 			vars.time0 = current.time + 3000;
 		}
@@ -632,7 +622,7 @@ split
 		{
 			vars.time0 = current.time + 3000;
 		}
-		if(settings["proudclad2Set"] & old.proudclad2 == 0 & current.proudclad2 != 0)
+		if(settings["proudclad2Set"] & old.spoil != "acc_000_500" & current.spoil == "acc_000_500")
 		{
 			vars.time0 = current.time + 3000;
 		}
@@ -649,7 +639,7 @@ split
 		}
 		if(settings["wladislausSet"] & old.wladislaus == 0 & current.wladislaus != 0)
 		{
-			vars.time0 = current.time + 3000;
+			vars.time0 = current.time + 2000;
 		}
 		if(settings["tiamatSet"] & old.tiamat == 0 & current.tiamat != 0)
 		{
@@ -657,7 +647,7 @@ split
 		}
 		if(settings["bart3Set"] & old.bart3 == 0 & current.bart3 != 0)
 		{
-			vars.time0 = current.time + 3000;
+			vars.time0 = current.time + 2000;
 		}
 		if(settings["orphan1Set"] & old.orphan1 == 0 & current.orphan1 != 0)
 		{
