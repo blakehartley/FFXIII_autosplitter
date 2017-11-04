@@ -18,5 +18,4 @@
 //int hecatoncheir	: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x340E4;
 //int dahaka			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33DEC;
 //int bart2			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33F84;
-//int proudclad1		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33B8C;
 //int proudclad2		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33B84;

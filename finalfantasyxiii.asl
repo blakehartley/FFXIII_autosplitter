@@ -7,7 +7,9 @@ state("ffxiiiimg")
 	short saveScreen: 0x0242B5F0, 0x118;
 	//int split: 0x02431284;
 	//int start: 0x02431284;
-	short start			: "ffxiiiimg.exe", 0x004EE224, 0x0;
+	//short start			: "ffxiiiimg.exe", 0x004EE224, 0x0;
+	byte start1			: "ffxiiiimg.exe", 0x004EE224, 0x0;
+	byte start2			: "ffxiiiimg.exe", 0x004EE224, 0x2;
 	
 	int datalog			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x2590;
 	int crystogen		: "ffxiiiimg.exe", 0x0242B060, 0x54;
@@ -43,6 +45,7 @@ state("ffxiiiimg")
 	int vetala			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33D74;
 	int penanggalan		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3406C;
 	int bulwarker		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33A6C;
+	int proudclad1		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33B8C;
 	int adamanchelid	: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33D04;
 	int bandersnatch	: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33EBC;
 	int wladislaus		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33ED4;
@@ -221,8 +224,8 @@ init
 
 start
 {
-	//if(old.start == 68544 && current.start == 8448)
-	if(old.start == 3008 && current.start != 3008 && current.start != 29568)
+	//if(old.start == 3008 & current.start != 3008 & current.start != 29568)
+	if(old.start1 == 192 & current.start1 == 64 & old.start2 == 1 & current.start2 == 0)
 	{
 		vars.startTime = current.time;
 		return true;
@@ -255,6 +258,10 @@ split
 			vars.time0 = current.time + 2000;
 		}
 		if(settings["marauderSet"] & old.spoil != "material_j046" & current.spoil == "material_j046")
+		{
+			vars.time0 = current.time + 2000;
+		}
+		if(settings["marauderSet"] & old.spoil2 != "material_j046" & current.spoil2 == "material_j046")
 		{
 			vars.time0 = current.time + 2000;
 		}
@@ -381,7 +388,10 @@ split
 		}
 		if(settings["bombsold2Set"] & old.crystogen != 41 & current.crystogen == 41)
 		{
-			vars.time0 = current.time + 4000;
+			if(old.crystogen != 21)
+			{
+				vars.time0 = current.time + 4000;
+			}
 		}
 		if(settings["bombsSet"] & old.target != 30000 & current.target == 30000)
 		{
@@ -411,6 +421,10 @@ split
 			vars.time0 = current.time + 4000;
 		}
 		if(settings["feralBehemoth2Set"] & old.spoil != "key_shop_07" & current.spoil == "key_shop_07")
+		{
+			vars.time0 = current.time + 4000;
+		}
+		if(settings["feralBehemoth2Set"] & old.spoil2 != "key_shop_07" & current.spoil2 == "key_shop_07")
 		{
 			vars.time0 = current.time + 4000;
 		}
@@ -448,10 +462,13 @@ split
 		{
 			vars.time0 = current.time + 2500;
 		}
-		if(settings["ushu2Set"] & old.crystogen == 0 & current.crystogen == 960 & vars.ushu2done == false)
+		if(settings["ushu2Set"] & old.crystogen == 0 & current.crystogen == 960)
 		{
-			vars.time0 = current.time + 3000;
-			vars.ushu2done = true;
+			if(vars.ushu2done == false)
+			{
+				vars.time0 = current.time + 3000;
+				vars.ushu2done = true;
+			}
 		}
 		if(settings["sniperSet"] & old.sniper == 0 & current.sniper != 0)
 		{
@@ -617,7 +634,7 @@ split
 		{
 			vars.time0 = current.time + 3000;
 		}
-		if(settings["proudclad1Set"] & old.spoil != "material_j044" & current.spoil == "material_j044")
+		if(settings["proudclad1Set"] & old.proudclad1 == 0 & current.proudclad1 != 0)
 		{
 			vars.time0 = current.time + 3000;
 		}
