@@ -220,6 +220,7 @@ init
 
 start
 {
+	//if(old.start == 68544 && current.start == 8448)
 	if(old.start == 3008 && current.start != 3008 && current.start != 29568)
 	{
 		vars.startTime = current.time;
@@ -667,6 +668,14 @@ split
 		{
 			vars.time0 = 4294967295;
 			return true;
+		}
+		else if(current.time > vars.time0)
+		{
+			if(current.bover0 == 128 & current.bover1 == 128)
+			{
+				vars.time0 = 4294967295;
+				return true;
+			}
 		}
 	}
 	else if(current.time > vars.time0)
