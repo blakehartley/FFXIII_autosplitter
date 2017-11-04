@@ -216,6 +216,7 @@ init
 	vars.chapter = false;
 	vars.startTime = 0;
 	vars.temp = 0;
+	vars.ushu2done = false;
 }
 
 start
@@ -447,9 +448,10 @@ split
 		{
 			vars.time0 = current.time + 2500;
 		}
-		if(settings["ushu2Set"] & old.crystogen == 0 & current.crystogen == 960)
+		if(settings["ushu2Set"] & old.crystogen == 0 & current.crystogen == 960 & vars.ushu2done == false)
 		{
 			vars.time0 = current.time + 3000;
+			vars.ushu2done = true;
 		}
 		if(settings["sniperSet"] & old.sniper == 0 & current.sniper != 0)
 		{
