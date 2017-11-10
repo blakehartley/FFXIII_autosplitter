@@ -19,6 +19,9 @@ state("ffxiiiimg")
 	string16 spoil2		: "ffxiiiimg.exe", 0x0242B060, 0x88;
 	string16 spoilb		: "ffxiiiimg.exe", 0x0242B060, 0x278;
 	
+	string16 zone		: "ffxiiiimg.exe", 0x0020073C, 0x0;
+	int battletime		: "ffxiiiimg.exe", 0x023FD208, 0x60;
+	
 	int pantheron		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3370C;
 	int betaBehemoth	: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33784;
 	int myrmidon		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33B64;
@@ -220,6 +223,7 @@ init
 	vars.startTime = 0;
 	vars.temp = 0;
 	vars.ushu2done = false;
+	vars.zonetime = 4294967295;
 }
 
 start
@@ -678,6 +682,19 @@ split
 	{
 		vars.time0 = current.time + 3000;
 	}
+	
+	/*if(old.zone == "gr_mon_0001" & current.zone == "" & current.battletime !=0)
+	{
+		vars.zonetime = current.time + 200;
+	}
+	if(vars.zonetime != 4294967295 & current.zone != "gr_mon_0001")
+	{
+		if(current.time > vars.zonetime)
+		{
+			vars.zonetime = 4294967295;
+			return true;
+		}
+	}*/
 	
 	// Fight split. Wait three seconds and for the battle screen to fade.
 	//if(current.bover0 == 128 & current.bover1 == 128 & current.time > vars.time0)
