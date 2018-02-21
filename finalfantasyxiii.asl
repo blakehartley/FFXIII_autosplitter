@@ -43,7 +43,7 @@ state("ffxiiiimg")
 	int pudding			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33734;
 	int gelatitan		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3407C;
 	int amblingbellows	: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3405C;
-	int garungatch		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33FEC;
+	int gurangatch		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33FEC;
 	int mushussu		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x34034;
 	int vetala			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33D74;
 	int penanggalan		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3406C;
@@ -182,7 +182,7 @@ startup {
 	settings.Add("hecatoncheirSet", false, "Hecatoncheir", "chapter11");
 	settings.Add("gelatitanSet", false, "Gelatitan", "chapter11");
 	settings.Add("amblingbellowsSet", false, "Ambling Bellows", "chapter11");
-	settings.Add("garungatchSet", false, "Garungatch", "chapter11");
+	settings.Add("gurangatchSet", false, "Gurangatch", "chapter11");
 	settings.Add("mushussuSet", false, "Mushussu", "chapter11");
 	settings.Add("vetalaSet", false, "Vetala", "chapter11");
 	settings.Add("penanggalanSet", false, "Penanggalan", "chapter11");
@@ -595,7 +595,7 @@ split
 		{
 			vars.time0 = current.time + 3000;
 		}
-		if(settings["garungatchSet"] & old.garungatch == 0 & current.garungatch != 0)
+		if(settings["gurangatchSet"] & old.gurangatch == 0 & current.gurangatch != 0)
 		{
 			vars.time0 = current.time + 4000;
 		}
