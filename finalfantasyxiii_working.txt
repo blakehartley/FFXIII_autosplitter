@@ -109,6 +109,10 @@ startup {
 	settings.Add("dreadnaughtSet", false, "Dreadnaught", "chapter4");
 	settings.Add("odinSet", false, "Odin", "chapter4");
 	settings.Add("uhlanSet", false, "Uhlan x2", "chapter4");
+	//settings.Add("bombsold1Set", false, "Pulsework Soldier & Bomb", "chapter4");
+	//settings.Add("soldiersSet", false, "Pulsework Soldier x2", "chapter4");
+	//settings.Add("bombsold2Set", false, "Bomb & Pulsework Soldier", "chapter4");
+	//settings.Add("bombsSet", false, "Bomb x2", "chapter4");
 	
 	// Chapter 5:
 	settings.Add("chapter5", true, "Chapter 5");
@@ -378,6 +382,25 @@ split
 		{
 			vars.time0 = current.time + 3000;
 		}
+		/*if(settings["bombsold1Set"] & old.bomb == 0 & current.bomb != 0)
+		{
+			vars.time0 = current.time + 4000;
+		}
+		if(settings["soldiersSet"] & old.crystogen != 87 & current.crystogen == 87)
+		{
+			vars.time0 = current.time + 4000;
+		}
+		if(settings["bombsold2Set"] & old.crystogen != 41 & current.crystogen == 41)
+		{
+			if(old.crystogen != 21)
+			{
+				vars.time0 = current.time + 4000;
+			}
+		}
+		if(settings["bombsSet"] & old.target != 30000 & current.target == 30000)
+		{
+			vars.time0 = current.time + 4000;
+		}*/
 	}
 	else if(settings["chapter5"] & current.datalog <= 360)
 	{
@@ -441,14 +464,11 @@ split
 		}
 		if(settings["ushu1Set"] & old.spoil != "material_m023" & current.spoil == "material_m023")
 		{
-			if(current.datalog == 480)
-			{
-				vars.time0 = current.time + 2500;
-			}
+			vars.time0 = current.time + 2500;
 		}
 		if(settings["ushu2Set"] & old.crystogen == 0 & current.crystogen == 960)
 		{
-			if(vars.ushu2done == false && current.datalog == 500)
+			if(vars.ushu2done == false)
 			{
 				vars.time0 = current.time + 3000;
 				vars.ushu2done = true;
