@@ -104,9 +104,9 @@ startup {
 	settings.Add("pantheron4Set", false, "Pantheron x4", "chapter4");
 	settings.Add("watchdroneSet", false, "Pulsework Soldier and Watchdrones", "chapter4");
 	settings.Add("birdsSet", false, "Succubus & Incubus x2", "chapter4");
+	settings.Add("dreadnaughtSet", false, "Juggernaut", "chapter4");
 	settings.Add("gunnerSet", false, "PSICOM Tracker & Gunners", "chapter4");
 	settings.Add("trackerSet", false, "PSICOM Tracker x2", "chapter4");
-	settings.Add("dreadnaughtSet", false, "Dreadnaught", "chapter4");
 	settings.Add("odinSet", false, "Odin", "chapter4");
 	settings.Add("uhlanSet", false, "Uhlan x2", "chapter4");
 	
@@ -577,7 +577,7 @@ split
 		}
 		if(settings["gurangatchSet"] & old.gurangatch == 0 & current.gurangatch != 0)
 		{
-			vars.time0 = current.time + 4000;
+			vars.time0 = current.time + 3000;
 		}
 		if(settings["mushussuSet"] & old.mushussu == 0 & current.mushussu != 0)
 		{
@@ -608,7 +608,7 @@ split
 		}
 		if(settings["anavataptaSet"] & old.crystogen != 26000 & current.crystogen == 26000)
 		{
-			vars.time0 = current.time + 3000;
+			vars.time0 = current.time + 4000;
 		}
 		if(settings["bulwarkerSet"] & old.bulwarker == 0 & current.bulwarker != 0)
 		{
