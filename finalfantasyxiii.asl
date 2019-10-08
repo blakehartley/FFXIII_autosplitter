@@ -158,7 +158,7 @@ startup {
 	settings.Add("bridge1Set", false, "PSICOM Destroyer & Infiltrators", "chapter9");
 	settings.Add("bridge2Set", false, "PSICOM Destroyer & Dragoons", "chapter9");
 	settings.Add("bridge3Set", false, "Thermadon & PSICOM Raiders", "chapter9");
-	settings.Add("reaverSet", false, "PSICOM Reaver & Dragoons", "chapter9");
+	settings.Add("reaverSet", false, "PSICOM Reaver & Huntresses & Destroyer", "chapter9");
 	settings.Add("bart1Set", false, "Barthandelus 1", "chapter9");
 	
 	// Chapter 10:
@@ -346,7 +346,7 @@ split
 		{
 			vars.chapter = true;
 		}
-		if(settings["pantheron4Set"] & old.target != 32000 & current.target == 32000)
+		if(settings["pantheron4Set"] & old.target != 29000 & current.target == 29000)
 		{
 			vars.time0 = current.time + 3000;
 		}
