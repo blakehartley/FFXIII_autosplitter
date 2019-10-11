@@ -8,6 +8,7 @@ state("ffxiiiimg")
 	//int split: 0x02431284;
 	//int start: 0x02431284;
 	//short start			: "ffxiiiimg.exe", 0x004EE224, 0x0;
+	long play_time		: "ffxiiiimg.exe", 0x00EA130C, 0x160;
 	byte start1			: "ffxiiiimg.exe", 0x004EE224, 0x0;
 	byte start2			: "ffxiiiimg.exe", 0x004EE224, 0x2;
 	
@@ -104,15 +105,11 @@ startup {
 	settings.Add("pantheron4Set", false, "Pantheron x4", "chapter4");
 	settings.Add("watchdroneSet", false, "Pulsework Soldier and Watchdrones", "chapter4");
 	settings.Add("birdsSet", false, "Succubus & Incubus x2", "chapter4");
+	settings.Add("dreadnaughtSet", false, "Juggernaut", "chapter4");
 	settings.Add("gunnerSet", false, "PSICOM Tracker & Gunners", "chapter4");
 	settings.Add("trackerSet", false, "PSICOM Tracker x2", "chapter4");
-	settings.Add("dreadnaughtSet", false, "Dreadnaught", "chapter4");
 	settings.Add("odinSet", false, "Odin", "chapter4");
 	settings.Add("uhlanSet", false, "Uhlan x2", "chapter4");
-	//settings.Add("bombsold1Set", false, "Pulsework Soldier & Bomb", "chapter4");
-	//settings.Add("soldiersSet", false, "Pulsework Soldier x2", "chapter4");
-	//settings.Add("bombsold2Set", false, "Bomb & Pulsework Soldier", "chapter4");
-	//settings.Add("bombsSet", false, "Bomb x2", "chapter4");
 	
 	// Chapter 5:
 	settings.Add("chapter5", true, "Chapter 5");
@@ -162,7 +159,7 @@ startup {
 	settings.Add("bridge1Set", false, "PSICOM Destroyer & Infiltrators", "chapter9");
 	settings.Add("bridge2Set", false, "PSICOM Destroyer & Dragoons", "chapter9");
 	settings.Add("bridge3Set", false, "Thermadon & PSICOM Raiders", "chapter9");
-	settings.Add("reaverSet", false, "PSICOM Reaver & Dragoons", "chapter9");
+	settings.Add("reaverSet", false, "PSICOM Reaver & Huntresses & Destroyer", "chapter9");
 	settings.Add("bart1Set", false, "Barthandelus 1", "chapter9");
 	
 	// Chapter 10:
@@ -246,7 +243,8 @@ reset
 
 isLoading
 {
-	return (current.load == 0 && current.pause == 0 && current.saveScreen != 7 && settings["load_removal"]);
+	return (old.play_time == current.play_time);
+	//return (current.load == 0 && current.pause == 0 && current.saveScreen != 7 && settings["load_removal"]);
 }
 
 split
@@ -350,7 +348,7 @@ split
 		{
 			vars.chapter = true;
 		}
-		if(settings["pantheron4Set"] & old.target != 32000 & current.target == 32000)
+		if(settings["pantheron4Set"] & old.target != 29000 & current.target == 29000)
 		{
 			vars.time0 = current.time + 3000;
 		}
@@ -382,25 +380,6 @@ split
 		{
 			vars.time0 = current.time + 3000;
 		}
-		/*if(settings["bombsold1Set"] & old.bomb == 0 & current.bomb != 0)
-		{
-			vars.time0 = current.time + 4000;
-		}
-		if(settings["soldiersSet"] & old.crystogen != 87 & current.crystogen == 87)
-		{
-			vars.time0 = current.time + 4000;
-		}
-		if(settings["bombsold2Set"] & old.crystogen != 41 & current.crystogen == 41)
-		{
-			if(old.crystogen != 21)
-			{
-				vars.time0 = current.time + 4000;
-			}
-		}
-		if(settings["bombsSet"] & old.target != 30000 & current.target == 30000)
-		{
-			vars.time0 = current.time + 4000;
-		}*/
 	}
 	else if(settings["chapter5"] & current.datalog <= 360)
 	{
@@ -464,11 +443,14 @@ split
 		}
 		if(settings["ushu1Set"] & old.spoil != "material_m023" & current.spoil == "material_m023")
 		{
-			vars.time0 = current.time + 2500;
+			if(current.datalog == 480)
+			{
+				vars.time0 = current.time + 2500;
+			}
 		}
 		if(settings["ushu2Set"] & old.crystogen == 0 & current.crystogen == 960)
 		{
-			if(vars.ushu2done == false)
+			if(vars.ushu2done == false && current.datalog == 500)
 			{
 				vars.time0 = current.time + 3000;
 				vars.ushu2done = true;
@@ -597,7 +579,7 @@ split
 		}
 		if(settings["gurangatchSet"] & old.gurangatch == 0 & current.gurangatch != 0)
 		{
-			vars.time0 = current.time + 4000;
+			vars.time0 = current.time + 3000;
 		}
 		if(settings["mushussuSet"] & old.mushussu == 0 & current.mushussu != 0)
 		{
@@ -628,7 +610,7 @@ split
 		}
 		if(settings["anavataptaSet"] & old.crystogen != 26000 & current.crystogen == 26000)
 		{
-			vars.time0 = current.time + 3000;
+			vars.time0 = current.time + 4000;
 		}
 		if(settings["bulwarkerSet"] & old.bulwarker == 0 & current.bulwarker != 0)
 		{

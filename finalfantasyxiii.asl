@@ -225,7 +225,7 @@ init
 start
 {
 	//if(old.start == 3008 & current.start != 3008 & current.start != 29568)
-	if(old.start1 == 192 & current.start1 == 64 & old.start2 == 1 & current.start2 == 0)
+	if(old.start1 == 192 & current.start1 == 64 & old.start2 == 1 & current.start2 == 0 & current.pantheron == 0)
 	{
 		vars.startTime = current.time;
 		return true;
