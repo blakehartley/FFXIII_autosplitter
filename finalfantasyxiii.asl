@@ -15,6 +15,7 @@ state("ffxiiiimg")
 	int crystogen		: "ffxiiiimg.exe", 0x0242B060, 0x54;
 	int crystogenb		: "ffxiiiimg.exe", 0x0242B060, 0x25C;
 	int target			: "ffxiiiimg.exe", 0x0242B060, 0x3C;
+	int targetb			: "ffxiiiimg.exe", 0x0242B060, 0x244;
 	string16 spoil		: "ffxiiiimg.exe", 0x0242B060, 0x70;
 	string16 spoil2		: "ffxiiiimg.exe", 0x0242B060, 0x88;
 	string16 spoilb		: "ffxiiiimg.exe", 0x0242B060, 0x278;
@@ -298,9 +299,9 @@ reset
 {
 	if(current.time - vars.startTime > 2000 && current.datalog == 0)
 	{
-		return true;
 		vars.dodgeCount = 0;
 		vars.deathCount = 0;
+		return true;
 	}
 }
 
