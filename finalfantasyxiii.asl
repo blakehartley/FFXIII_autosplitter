@@ -18,13 +18,16 @@ state("ffxiiiimg")
 	string16 spoil		: "ffxiiiimg.exe", 0x0242B060, 0x70;
 	string16 spoil2		: "ffxiiiimg.exe", 0x0242B060, 0x88;
 	string16 spoilb		: "ffxiiiimg.exe", 0x0242B060, 0x278;
+	int enemy_point		: "ffxiiiimg.exe", 0x023FD20C, 0x12C;
 	
 	string16 zone		: "ffxiiiimg.exe", 0x0020073C, 0x0;
 	int battletime		: "ffxiiiimg.exe", 0x023FD208, 0x60;
 	
+	//int manasvin0		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33AE4;
 	int pantheron		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3370C;
 	int betaBehemoth	: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33784;
 	int myrmidon		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33B64;
+	int ghoul			: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33D54;
 	int manasvin		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33AF4;
 	int alphaBehemoth	: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33844;
 	int pulsesold		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x338C4;
@@ -64,6 +67,8 @@ state("ffxiiiimg")
 
 startup {
 	settings.Add("lasthit", false, "Split on last hit");
+	settings.Add("dodgeCountSet", false, "Override text component with a Failed Dodge Counter");
+	settings.Add("deathCountSet", false, "Override text component with a Death Counter");
 	
 	// Chapter 1:
 	settings.Add("chapter1", true, "Chapter 1");
@@ -220,6 +225,61 @@ init
 	vars.temp = 0;
 	vars.ushu2done = false;
 	vars.zonetime = 4294967295;
+	
+	vars.dodgeCount = 0;
+	vars.deathCount = 0;
+	vars.updateDodge = false;
+	vars.updateDeath = false;
+	vars.tcs0 = null;
+	vars.tcs1 = null;
+	
+	//vars.temp = 10;
+	
+	// This is extremely crude, but it works.
+	// Just the Failed Dodges counter
+	if (settings["dodgeCountSet"] == true & settings["deathCountSet"] == false) {
+		foreach (LiveSplit.UI.Components.IComponent component in timer.Layout.Components) {
+		  if (component.GetType().Name == "TextComponent") {
+			vars.tc = component;
+			vars.tcs0 = vars.tc.Settings;
+			vars.updateDodge = true;
+			print("Found text component at " + component);
+			break;
+		  }
+		}
+	}
+	// Just the Deaths counter
+	if (settings["dodgeCountSet"] == false & settings["deathCountSet"] == true) {
+		foreach (LiveSplit.UI.Components.IComponent component in timer.Layout.Components) {
+		  if (component.GetType().Name == "TextComponent") {
+			vars.tc = component;
+			vars.tcs1 = vars.tc.Settings;
+			vars.updateDeath = true;
+			break;
+		  }
+		}
+	}
+	
+	// Both counters
+	vars.loop = 0;
+	if (settings["dodgeCountSet"] & settings["deathCountSet"]) {
+		foreach (LiveSplit.UI.Components.IComponent component in timer.Layout.Components) {
+		  if (component.GetType().Name == "TextComponent" & vars.loop == 0) {
+			vars.tc = component;
+			vars.tcs0 = vars.tc.Settings;
+			vars.updateDodge = true;
+			vars.loop = 1;
+			continue;
+		  }
+		  
+		  if (component.GetType().Name == "TextComponent" & vars.loop == 1) {
+			vars.tc = component;
+			vars.tcs1 = vars.tc.Settings;
+			vars.updateDeath = true;
+			break;
+		  }
+		}
+	}
 }
 
 start
@@ -228,6 +288,8 @@ start
 	if(old.start1 == 192 & current.start1 == 64 & old.start2 == 1 & current.start2 == 0 & current.pantheron == 0)
 	{
 		vars.startTime = current.time;
+		vars.dodgeCount = 0;
+		vars.deathCount = 0;
 		return true;
 	}
 }
@@ -243,6 +305,36 @@ reset
 isLoading
 {
 	return (current.load == 0 && current.pause == 0 && current.saveScreen != 7 && settings["load_removal"]);
+}
+
+update
+{
+	// Update counters
+	if (vars.tcs0 != null) {
+		vars.tcs0.Text1 = "Failed Dodges:";
+		vars.tcs0.Text2 = vars.dodgeCount.ToString();
+	}
+	if (vars.tcs1 != null) {
+		vars.tcs1.Text1 = "Deaths:";
+		vars.tcs1.Text2 = vars.deathCount.ToString();
+	}
+	
+	// Failed Dodge/Death Logic
+	if(current.enemy_point == 0 & old.enemy_point != 0)
+	{
+		if(current.target == 0)
+		{
+			if(current.battletime < 10000)
+			{
+				vars.dodgeCount++;
+			}
+			else
+			{
+				vars.deathCount++;
+			}
+		}
+	}
+	return true;
 }
 
 split
@@ -300,7 +392,7 @@ split
 		{
 			vars.time0 = current.time + 4000;
 		}
-		if(settings["ghoul3Set"] & old.target != 42000 & current.target == 42000)
+		if(settings["ghoul3Set"] & old.ghoul == 0 & current.ghoul != 0)
 		{
 			vars.time0 = current.time + 4000;
 		}
@@ -366,7 +458,7 @@ split
 		{
 			vars.time0 = current.time + 3000;
 		}
-		if(settings["trackerSet"] & old.crystogen != 16 & current.crystogen == 16)
+		if(settings["trackerSet"] & old.crystogen != 16 & current.crystogen == 16 & current.datalog >= 260)
 		{
 			vars.time0 = current.time + 3000;
 		}
@@ -662,19 +754,6 @@ split
 	{
 		vars.time0 = current.time + 3000;
 	}
-	
-	/*if(old.zone == "gr_mon_0001" & current.zone == "" & current.battletime !=0)
-	{
-		vars.zonetime = current.time + 200;
-	}
-	if(vars.zonetime != 4294967295 & current.zone != "gr_mon_0001")
-	{
-		if(current.time > vars.zonetime)
-		{
-			vars.zonetime = 4294967295;
-			return true;
-		}
-	}*/
 	
 	// Fight split. Wait three seconds and for the battle screen to fade.
 	//if(current.bover0 == 128 & current.bover1 == 128 & current.time > vars.time0)
