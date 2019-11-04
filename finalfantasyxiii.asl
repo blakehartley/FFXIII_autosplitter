@@ -299,6 +299,8 @@ reset
 	if(current.time - vars.startTime > 2000 && current.datalog == 0)
 	{
 		return true;
+		vars.dodgeCount = 0;
+		vars.deathCount = 0;
 	}
 }
 
