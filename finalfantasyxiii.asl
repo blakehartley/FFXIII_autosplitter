@@ -21,7 +21,7 @@ state("ffxiiiimg")
 	string16 spoilb		: "ffxiiiimg.exe", 0x0242B060, 0x278;
 	int enemy_point		: "ffxiiiimg.exe", 0x023FD20C, 0x12C;
 	
-	string16 zone		: "ffxiiiimg.exe", 0x0020073C, 0x0;
+	int zone			: "ffxiiiimg.exe", 0x0020073C, 0x0;
 	int battletime		: "ffxiiiimg.exe", 0x023FD208, 0x60;
 	
 	//int manasvin0		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33AE4;
@@ -70,6 +70,7 @@ startup {
 	settings.Add("lasthit", false, "Split on last hit");
 	settings.Add("dodgeCountSet", false, "Override text component with a Failed Dodge Counter");
 	settings.Add("deathCountSet", false, "Override text component with a Death Counter");
+	settings.Add("timeCountSet", false, "Override text component with a Failed Dodge Timeloss Meter");
 	
 	// Chapter 1:
 	settings.Add("chapter1", true, "Chapter 1");
@@ -225,61 +226,44 @@ init
 	vars.startTime = 0;
 	vars.temp = 0;
 	vars.ushu2done = false;
-	vars.zonetime = 4294967295;
 	
 	vars.dodgeCount = 0;
 	vars.deathCount = 0;
-	vars.updateDodge = false;
-	vars.updateDeath = false;
-	vars.tcs0 = null;
-	vars.tcs1 = null;
+	vars.timeCount = 0;
+	vars.retrying = false;
+	vars.inZone = false;
+	vars.zone0 = 0;
 	
-	//vars.temp = 10;
+	vars.comp_array = new LiveSplit.UI.Components.IComponent [3];
 	
-	// This is extremely crude, but it works.
-	// Just the Failed Dodges counter
-	if (settings["dodgeCountSet"] == true & settings["deathCountSet"] == false) {
-		foreach (LiveSplit.UI.Components.IComponent component in timer.Layout.Components) {
-		  if (component.GetType().Name == "TextComponent") {
-			vars.tc = component;
-			vars.tcs0 = vars.tc.Settings;
-			vars.updateDodge = true;
-			print("Found text component at " + component);
-			break;
-		  }
-		}
-	}
-	// Just the Deaths counter
-	if (settings["dodgeCountSet"] == false & settings["deathCountSet"] == true) {
-		foreach (LiveSplit.UI.Components.IComponent component in timer.Layout.Components) {
-		  if (component.GetType().Name == "TextComponent") {
-			vars.tc = component;
-			vars.tcs1 = vars.tc.Settings;
-			vars.updateDeath = true;
-			break;
-		  }
-		}
-	}
-	
-	// Both counters
-	vars.loop = 0;
-	if (settings["dodgeCountSet"] & settings["deathCountSet"]) {
-		foreach (LiveSplit.UI.Components.IComponent component in timer.Layout.Components) {
-		  if (component.GetType().Name == "TextComponent" & vars.loop == 0) {
-			vars.tc = component;
-			vars.tcs0 = vars.tc.Settings;
-			vars.updateDodge = true;
-			vars.loop = 1;
+	vars.arrNum = 0;
+	vars.dodgeTextNum = -1;
+	vars.deathTextNum = -1;
+	vars.timeTextNum = -1;
+	foreach (LiveSplit.UI.Components.IComponent component in timer.Layout.Components) {
+	  if (component.GetType().Name == "TextComponent") {
+		if (settings["dodgeCountSet"] == true & vars.dodgeTextNum == -1) {
+			vars.comp_array[vars.arrNum] = component;
+			vars.comp_array[vars.arrNum].Settings.Text1 = "Failed Dodges:";
+			vars.dodgeTextNum = vars.arrNum;
+			vars.arrNum++;
 			continue;
-		  }
-		  
-		  if (component.GetType().Name == "TextComponent" & vars.loop == 1) {
-			vars.tc = component;
-			vars.tcs1 = vars.tc.Settings;
-			vars.updateDeath = true;
-			break;
-		  }
 		}
+		if (settings["deathCountSet"] == true & vars.deathTextNum == -1) {
+			vars.comp_array[vars.arrNum] = component;
+			vars.comp_array[vars.arrNum].Settings.Text1 = "Deaths:";
+			vars.deathTextNum = vars.arrNum;
+			vars.arrNum++;
+			continue;
+		}
+		if (settings["timeCountSet"] == true & vars.timeTextNum == -1) {
+			vars.comp_array[vars.arrNum] = component;
+			vars.comp_array[vars.arrNum].Settings.Text1 = "Time Loss:";
+			vars.timeTextNum = vars.arrNum;
+			vars.arrNum++;
+			continue;
+		}
+	  }
 	}
 }
 
@@ -291,6 +275,7 @@ start
 		vars.startTime = current.time;
 		vars.dodgeCount = 0;
 		vars.deathCount = 0;
+		vars.timeCount = 0;
 		return true;
 	}
 }
@@ -313,14 +298,16 @@ isLoading
 update
 {
 	// Update counters
-	if (vars.tcs0 != null) {
-		vars.tcs0.Text1 = "Failed Dodges:";
-		vars.tcs0.Text2 = vars.dodgeCount.ToString();
-	}
-	if (vars.tcs1 != null) {
-		vars.tcs1.Text1 = "Deaths:";
-		vars.tcs1.Text2 = vars.deathCount.ToString();
-	}
+	vars.tcs = vars.comp_array[vars.dodgeTextNum].Settings;
+	vars.tcs.Text2 = vars.dodgeCount.ToString();
+	
+	vars.tcs = vars.comp_array[vars.deathTextNum].Settings;
+	vars.tcs.Text2 = vars.deathCount.ToString();
+	
+	vars.tcs = vars.comp_array[vars.timeTextNum].Settings;
+	vars.m = vars.timeCount/60;
+	vars.s = vars.timeCount%60;
+	vars.tcs.Text2 = vars.m.ToString() + ":" + vars.s.ToString().PadLeft(2,'0');
 	
 	// Failed Dodge/Death Logic
 	if(current.enemy_point == 0 & old.enemy_point != 0)
@@ -330,12 +317,38 @@ update
 			if(current.battletime < 10000)
 			{
 				vars.dodgeCount++;
+				vars.retrying = true;
 			}
 			else
 			{
 				vars.deathCount++;
 			}
 		}
+	}
+	// Time loss meter
+	if( old.zone == 0 & current.zone != 0)
+	{
+		vars.inZone = true;
+	}
+	if( old.zone != 0 & current.zone == 0)
+	{
+		vars.inZone = false;
+	}
+	
+	if( old.zone == 0 & current.zone != 0)
+	{
+		if( vars.retrying == true & vars.inZone == true)
+		{
+			vars.timeCount = vars.timeCount + (current.time - vars.zone0)/1000;
+			vars.retrying = false;
+		}
+		
+		vars.zone0 = current.time;
+	}
+	
+	if( current.battletime != 0 & old.battletime == 0)
+	{
+		vars.retrying = false;
 	}
 	return true;
 }
@@ -371,6 +384,23 @@ split
 		if(settings["enforcerSet"] & old.target != 33000 & current.target == 33000)
 		{
 			vars.time0 = current.time + 3000;
+		}
+		
+		// Failed Dodge Logic
+		if(	current.target == 52000 |	// Legendary Dodge
+			current.target == 115000 |	// Last Dodge
+			current.target == 19000 |	// Lightning 1/2
+			current.target == 26000 )	// Snow 1
+		{
+			if(old.target == 0)
+			{
+				vars.dodgeCount++;
+				vars.timeCount += (current.battletime+9000)/1000;
+			}
+		}
+		if(current.target == 115000 & old.target == 0)
+		{
+			vars.dodgeCount++;
 		}
 	}
 	else if(settings["chapter2"] & current.datalog <= 145)
