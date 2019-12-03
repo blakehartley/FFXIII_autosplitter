@@ -23,6 +23,7 @@ state("ffxiiiimg")
 	
 	int zone			: "ffxiiiimg.exe", 0x0020073C, 0x0;
 	int battletime		: "ffxiiiimg.exe", 0x023FD208, 0x60;
+	int shroudtime		: "ffxiiiimg.exe", 0x023FF068, 0x40, 0x3C0;
 	
 	//int manasvin0		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x33AE4;
 	int pantheron		: "ffxiiiimg.exe", 0x00598E18, 0x0, 0x3370C;
@@ -237,6 +238,7 @@ init
 	vars.inZone = false;
 	vars.zone0 = 0;
 	vars.boss0 = 0;
+	vars.lastShroud = 0;
 	
 	vars.comp_array = new LiveSplit.UI.Components.IComponent [4];
 	
@@ -287,7 +289,8 @@ start
 		vars.startTime = current.time;
 		vars.dodgeCount = 0;
 		vars.deathCount = 0;
-		vars.timeCount = 0;
+		vars.dodgeTime = 0;
+		vars.deathTime = 0;
 		return true;
 	}
 }
@@ -334,7 +337,10 @@ update
 			if(current.battletime < 10000)
 			{
 				vars.dodgeCount++;
-				vars.retrying = true;
+				if( current.time - vars.lastShroud > 8000)
+				{
+					vars.retrying = true;
+				}
 			}
 			else
 			{
@@ -353,6 +359,10 @@ update
 	{
 		vars.inZone = false;
 		vars.retrying = false;
+	}
+	if( old.shroudtime != 0 & current.shroudtime == 0)
+	{
+		vars.lastShroud = current.time;
 	}
 	if( old.zone == 0 & current.zone != 0)
 	{
