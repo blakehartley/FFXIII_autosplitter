@@ -301,6 +301,8 @@ reset
 	{
 		vars.dodgeCount = 0;
 		vars.deathCount = 0;
+		vars.dodgeTime = 0;
+		vars.deathTime = 0;
 		return true;
 	}
 }
