@@ -314,24 +314,6 @@ isLoading
 
 update
 {
-	// Update counters
-	vars.tcs = vars.comp_array[vars.dodgeTextNum].Settings;
-	vars.tcs.Text2 = vars.dodgeCount.ToString();
-	
-	vars.tcs = vars.comp_array[vars.dodgeTimeTextNum].Settings;
-	vars.m = vars.dodgeTime/60;
-	vars.s = vars.dodgeTime%60;
-	vars.tcs.Text2 = vars.m.ToString() + ":" + vars.s.ToString().PadLeft(2,'0');
-	
-	vars.tcs = vars.comp_array[vars.deathTextNum].Settings;
-	vars.tcs.Text2 = vars.deathCount.ToString();
-	
-	//vars.tcs = vars.comp_array[vars.deathTimeTextNum].Settings;
-	vars.m = vars.deathTime/60;
-	vars.s = vars.deathTime%60;
-	vars.tcs.Text2 = vars.m.ToString() + ":" + vars.s.ToString().PadLeft(2,'0');
-	
-	
 	// Failed Dodge/Death Logic
 	if(current.enemy_point == 0 & old.enemy_point != 0)
 	{
@@ -388,6 +370,23 @@ update
 		}
 		vars.boss0 = current.time;
 	}
+	
+	// Update counters
+	vars.tcs0 = vars.comp_array[vars.dodgeTextNum].Settings;
+	vars.tcs0.Text2 = vars.dodgeCount.ToString();
+	
+	/*vars.m = vars.dodgeTime/60;
+	vars.s = vars.dodgeTime%60;
+	vars.tcs1 = vars.comp_array[vars.dodgeTimeTextNum].Settings;
+	vars.tcs1.Text2 = vars.m.ToString() + ":" + vars.s.ToString().PadLeft(2,'0');*/
+	
+	vars.tcs2 = vars.comp_array[vars.deathTextNum].Settings;
+	vars.tcs2.Text2 = vars.deathCount.ToString();
+	
+	/*vars.m = vars.deathTime/60;
+	vars.s = vars.deathTime%60;
+	vars.tcs3 = vars.comp_array[vars.deathTimeTextNum].Settings;
+	vars.tcs3.Text2 = vars.m.ToString() + ":" + vars.s.ToString().PadLeft(2,'0');*/
 	
 	return true;
 }
