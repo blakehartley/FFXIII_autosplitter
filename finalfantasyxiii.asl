@@ -241,6 +241,7 @@ init
 	vars.dodgeTime = 0;
 	vars.deathCount = 0;
 	vars.deathTime = 0;
+	
 	vars.retrying = false;
 	vars.died = false;
 	vars.inZone = false;
@@ -248,7 +249,7 @@ init
 	vars.boss0 = 0;
 	vars.lastShroud = 0;
 	
-	vars.comp_array = new LiveSplit.UI.Components.IComponent [5];
+	vars.comp_array = new LiveSplit.UI.Components.IComponent [4];
 	
 	vars.arrNum = 0;
 	vars.dodgeTextNum = -1;
@@ -380,22 +381,34 @@ update
 	}
 	
 	// Update counters
-	vars.tcs0 = vars.comp_array[vars.dodgeTextNum].Settings;
-	vars.tcs0.Text2 = vars.dodgeCount.ToString();
+	if(vars.dodgeTextNum != -1)
+	{
+		vars.tcs0 = vars.comp_array[vars.dodgeTextNum].Settings;
+		vars.tcs0.Text2 = vars.dodgeCount.ToString();
+	}
 	
-	vars.m = vars.dodgeTime/60;
-	vars.s = vars.dodgeTime%60;
-	vars.tcs1 = vars.comp_array[vars.dodgeTimeTextNum].Settings;
-	vars.tcs1.Text2 = vars.m.ToString() + ":" + vars.s.ToString().PadLeft(2,'0');
+	if(vars.dodgeTimeTextNum != -1)
+	{
+		vars.m = vars.dodgeTime/60;
+		vars.s = vars.dodgeTime%60;
+		vars.tcs1 = vars.comp_array[vars.dodgeTimeTextNum].Settings;
+		vars.tcs1.Text2 = vars.m.ToString() + ":" + vars.s.ToString().PadLeft(2,'0');
+	}
 	
-	vars.tcs2 = vars.comp_array[vars.deathTextNum].Settings;
-	vars.tcs2.Text2 = vars.deathCount.ToString();
+	if(vars.deathTextNum != -1)
+	{
+		vars.tcs2 = vars.comp_array[vars.deathTextNum].Settings;
+		vars.tcs2.Text2 = vars.deathCount.ToString();
+	}
 	
-	vars.m = vars.deathTime/60;
-	vars.s = vars.deathTime%60;
-	vars.tcs3 = vars.comp_array[vars.deathTimeTextNum].Settings;
-	vars.tcs3.Text2 = vars.m.ToString() + ":" + vars.s.ToString().PadLeft(2,'0');
-	
+	if(vars.deathTimeTextNum != -1)
+	{
+		vars.m = vars.deathTime/60;
+		vars.s = vars.deathTime%60;
+		vars.tcs3 = vars.comp_array[vars.deathTimeTextNum].Settings;
+		vars.tcs3.Text2 = vars.m.ToString() + ":" + vars.s.ToString().PadLeft(2,'0');
+	}
+
 	return true;
 }
 
@@ -433,20 +446,22 @@ split
 		}
 		
 		// Failed Dodge Logic
-		if(	current.target == 52000 |	// Legendary Dodge
-			current.target == 115000 |	// Last Dodge
-			current.target == 19000 |	// Lightning 1/2
-			current.target == 26000 )	// Snow 1
+		if(	current.target == 19000 |	// Lightning 1/2
+			current.target == 68000 |	// Lightning 4
+			current.target == 48000 |	// Lightning 5
+			current.target == 25000 |	// Lightning 6
+			current.target == 26000 |	// Snow 1
+			current.target == 20000 |	// Snow 2
+			current.target == 52000 |	// Legendary Dodge
+			current.target == 43000 |	// Snow 4
+			current.target == 34000 |	// Snow 5/6
+			current.target == 115000 )	// Last Dodge
 		{
 			if(old.target == 0)
 			{
 				vars.dodgeCount++;
-				vars.timeCount += (current.battletime+9000)/1000;
+				vars.dodgeTime += (current.battletime+9000)/1000;
 			}
-		}
-		if(current.target == 115000 & old.target == 0)
-		{
-			vars.dodgeCount++;
 		}
 	}
 	else if(settings["chapter2"] & current.datalog <= 145)
@@ -509,6 +524,15 @@ split
 		if(settings["shivaSet"] & old.spoil != "key_c_shiva" & current.spoil == "key_c_shiva")
 		{
 			vars.time0 = current.time + 3000;
+		}
+		// Failed Dodge Logic
+		if(	current.target == 29000 )	// 4x Doggo
+		{
+			if(old.target == 0)
+			{
+				vars.dodgeCount++;
+				vars.dodgeTime += (current.battletime+9000)/1000;
+			}
 		}
 	}
 	else if(settings["chapter4"] & current.datalog <= 290)
