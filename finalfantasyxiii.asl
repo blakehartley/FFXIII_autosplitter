@@ -240,7 +240,7 @@ init
 	vars.boss0 = 0;
 	vars.lastShroud = 0;
 	
-	vars.comp_array = new LiveSplit.UI.Components.IComponent [4];
+	vars.comp_array = new LiveSplit.UI.Components.IComponent [5];
 	
 	vars.arrNum = 0;
 	vars.dodgeTextNum = -1;
@@ -325,7 +325,8 @@ update
 	
 	vars.tcs = vars.comp_array[vars.deathTextNum].Settings;
 	vars.tcs.Text2 = vars.deathCount.ToString();
-	vars.tcs = vars.comp_array[vars.deathTimeTextNum].Settings;
+	
+	//vars.tcs = vars.comp_array[vars.deathTimeTextNum].Settings;
 	vars.m = vars.deathTime/60;
 	vars.s = vars.deathTime%60;
 	vars.tcs.Text2 = vars.m.ToString() + ":" + vars.s.ToString().PadLeft(2,'0');
