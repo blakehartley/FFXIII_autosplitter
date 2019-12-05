@@ -1,6 +1,6 @@
 state("ffxiiiimg")
 {
-	short load : 0x02426A4C, 0x2E8;
+	byte load : "ffxiiiimg.exe", 0x02426A4C, 0x2E8;
 	//short load : "ffxiiiimg.exe", 0x00AAC964, 0x4;
 	//short load: 0x02426A14, 0x318;
 	short pause: 0x02426A4C, 0x85C;
@@ -22,6 +22,7 @@ state("ffxiiiimg")
 	int enemy_point		: "ffxiiiimg.exe", 0x023FD20C, 0x12C;
 	
 	int zone			: "ffxiiiimg.exe", 0x0020073C, 0x0;
+	string16 zoneText	: "ffxiiiimg.exe", 0x0020073C, 0x0;
 	int battletime		: "ffxiiiimg.exe", 0x023FD208, 0x60;
 	int shroudtime		: "ffxiiiimg.exe", 0x023FF068, 0x40, 0x3C0;
 	
@@ -215,6 +216,11 @@ startup {
 	settings.Add("bart3Set", false, "Barthandelus 3", "chapter13");
 	settings.Add("orphan1Set", false, "Orphan 1", "chapter13");
 	
+	// Other
+	settings.Add("other", true, "Other");
+	settings.Add("rngutterSet", false, "Split entering cutscene after RNGutter", "other");
+	settings.Add("vhtSet", false, "Split entering cutscene after VH&T", "other");
+	
 	// load removal
 	settings.Add("load_removal", true, "Load Removal");
 	settings.SetToolTip("load_removal", "Load Removal pauses the timer during load times, cutscenes, and the post-game menus.");
@@ -228,6 +234,8 @@ init
 	vars.startTime = 0;
 	vars.temp = 0;
 	vars.ushu2done = false;
+	vars.vht = false;
+	vars.rngutter = false;
 	
 	vars.dodgeCount = 0;
 	vars.dodgeTime = 0;
@@ -517,6 +525,22 @@ split
 		{
 			vars.time0 = current.time + 4000;
 		}
+		if(settings["rngutterSet"])
+		{
+			if(old.zoneText == "gr_mon_0009" & current.zone == 0)
+			{
+				vars.rngutter = true;
+			}
+			if(current.enemy_point != 0 & old.enemy_point == 0)
+			{
+				vars.rngutter = false;
+			}
+			if(vars.rngutter == true & current.load == 0 & old.load == 1)
+			{
+				vars.rngutter = false;
+				return true;
+			}
+		}
 		if(settings["birdsSet"] & old.crystogen != 47 & current.crystogen == 47)
 		{
 			vars.time0 = current.time + 4000;
@@ -788,6 +812,22 @@ split
 		if(settings["adamanchelidSet"] & old.adamanchelid == 0 & current.adamanchelid != 0)
 		{
 			vars.time0 = current.time + 3000;
+		}
+		if(settings["vhtSet"])
+		{
+			if(old.zoneText == "gr_mon_0059" & current.zone == 0)
+			{
+				vars.vht = true;
+			}
+			if(current.enemy_point != 0 & old.enemy_point == 0)
+			{
+				vars.vht = false;
+			}
+			if(vars.vht == true & current.load == 0 & old.load == 1)
+			{
+				vars.vht = false;
+				return true;
+			}
 		}
 		if(settings["proudclad2Set"] & old.spoil != "acc_000_500" & current.spoil == "acc_000_500")
 		{
