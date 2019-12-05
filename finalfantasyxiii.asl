@@ -383,18 +383,18 @@ update
 	vars.tcs0 = vars.comp_array[vars.dodgeTextNum].Settings;
 	vars.tcs0.Text2 = vars.dodgeCount.ToString();
 	
-	/*vars.m = vars.dodgeTime/60;
+	vars.m = vars.dodgeTime/60;
 	vars.s = vars.dodgeTime%60;
 	vars.tcs1 = vars.comp_array[vars.dodgeTimeTextNum].Settings;
-	vars.tcs1.Text2 = vars.m.ToString() + ":" + vars.s.ToString().PadLeft(2,'0');*/
+	vars.tcs1.Text2 = vars.m.ToString() + ":" + vars.s.ToString().PadLeft(2,'0');
 	
 	vars.tcs2 = vars.comp_array[vars.deathTextNum].Settings;
 	vars.tcs2.Text2 = vars.deathCount.ToString();
 	
-	/*vars.m = vars.deathTime/60;
+	vars.m = vars.deathTime/60;
 	vars.s = vars.deathTime%60;
 	vars.tcs3 = vars.comp_array[vars.deathTimeTextNum].Settings;
-	vars.tcs3.Text2 = vars.m.ToString() + ":" + vars.s.ToString().PadLeft(2,'0');*/
+	vars.tcs3.Text2 = vars.m.ToString() + ":" + vars.s.ToString().PadLeft(2,'0');
 	
 	return true;
 }
