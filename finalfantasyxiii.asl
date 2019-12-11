@@ -238,13 +238,13 @@ init
 	vars.rngutter = false;
 	
 	vars.dodgeCount = 0;
+	vars.deceptCount = 0;
 	vars.dodgeTime = 0;
 	vars.deathCount = 0;
 	vars.deathTime = 0;
 	
 	vars.retrying = false;
 	vars.died = false;
-	vars.inZone = false;
 	vars.zone0 = 0;
 	vars.boss0 = 0;
 	vars.lastShroud = 0;
@@ -297,6 +297,7 @@ start
 	{
 		vars.startTime = current.time;
 		vars.dodgeCount = 0;
+		vars.deceptCount = 0;
 		vars.deathCount = 0;
 		vars.dodgeTime = 0;
 		vars.deathTime = 0;
@@ -309,6 +310,7 @@ reset
 	if(current.time - vars.startTime > 2000 && current.datalog == 0)
 	{
 		vars.dodgeCount = 0;
+		vars.deceptCount = 0;
 		vars.deathCount = 0;
 		vars.dodgeTime = 0;
 		vars.deathTime = 0;
@@ -318,7 +320,7 @@ reset
 
 isLoading
 {
-	return (current.load == 0 && current.pause == 0 && current.saveScreen != 7 && settings["load_removal"]);
+	return (current.load == 0 && current.pause == 0 && current.saveScreen != 7);
 }
 
 update
@@ -330,10 +332,14 @@ update
 		{
 			if(current.battletime < 10000)
 			{
-				vars.dodgeCount++;
-				if( current.time - vars.lastShroud > 8000)
+				if( current.time - vars.lastShroud > 10000)
 				{
+					vars.dodgeCount++;
 					vars.retrying = true;
+				}
+				else
+				{
+					vars.deceptCount++;
 				}
 			}
 			else
@@ -345,30 +351,24 @@ update
 	}
 	
 	// Time loss meter
-	if( old.zone == 0 & current.zone != 0)
-	{
-		vars.inZone = true;
-	}
-	if( old.zone != 0 & current.zone == 0)
-	{
-		vars.inZone = false;
-		vars.retrying = false;
-	}
 	if( old.shroudtime != 0 & current.shroudtime == 0)
 	{
 		vars.lastShroud = current.time;
 	}
-	if( old.zone == 0 & current.zone != 0)
+	if( old.zone != current.zone )	// Crossing Zone
 	{
-		if( vars.retrying == true & vars.inZone == true)
+		vars.zone0 = current.time;
+	}
+	if( old.load == 0 & current.load == 1)
+	{
+		if( vars.retrying == true )
 		{
 			vars.dodgeTime += (current.time - vars.zone0)/1000;
 			vars.retrying = false;
 		}
 		
-		vars.zone0 = current.time;
 	}
-	if( current.battletime != 0 & old.battletime == 0)
+	if( current.battletime != 0 & old.battletime == 0 )
 	{
 		vars.retrying = false;
 		
@@ -377,6 +377,7 @@ update
 			vars.deathTime += (current.time - vars.boss0)/1000;
 			vars.died = false;
 		}
+		
 		vars.boss0 = current.time;
 	}
 	
@@ -384,7 +385,7 @@ update
 	if(vars.dodgeTextNum != -1)
 	{
 		vars.tcs0 = vars.comp_array[vars.dodgeTextNum].Settings;
-		vars.tcs0.Text2 = vars.dodgeCount.ToString();
+		vars.tcs0.Text2 = vars.deceptCount.ToString() + "/" + vars.dodgeCount.ToString();
 	}
 	
 	if(vars.dodgeTimeTextNum != -1)
