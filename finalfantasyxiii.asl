@@ -664,6 +664,7 @@ split
 			{
 				vars.time0 = current.time + 3000;
 				vars.ushu2done = true;
+				vars.dodgeCount = vars.dodgeCount - 1;
 			}
 		}
 		if(settings["sniperSet"] & old.sniper == 0 & current.sniper != 0)
