@@ -18,6 +18,7 @@ state("ffxiiiimg")
 	int targetb			: "ffxiiiimg.exe", 0x0242B060, 0x244;
 	string16 spoil		: "ffxiiiimg.exe", 0x0242B060, 0x70;
 	string16 spoil2		: "ffxiiiimg.exe", 0x0242B060, 0x88;
+	string16 spoil3		: "ffxiiiimg.exe", 0x0242B060, 0xA0;
 	string16 spoilb		: "ffxiiiimg.exe", 0x0242B060, 0x278;
 	int enemy_point		: "ffxiiiimg.exe", 0x023FD20C, 0x12C;
 	
@@ -153,6 +154,7 @@ startup {
 	settings.Add("chapter8", true, "Chapter 8");
 	settings.SetToolTip("chapter8", "Split at the end of Chapter 8.");
 	
+	settings.Add("chocoboSet", false, "Chocobo Minigame", "chapter8");
 	settings.Add("midlightSet", false, "Midlight Reaper", "chapter8");
 	settings.Add("brynhildrSet", false, "Brynhildr", "chapter8");
 	
@@ -433,6 +435,10 @@ split
 		{
 			vars.time0 = current.time + 2000;
 		}
+		if(settings["marauderSet"] & old.spoil3 != "material_j046" & current.spoil3 == "material_j046")
+		{
+			vars.time0 = current.time + 2000;
+		}
 		if(settings["betaBehemothSet"] & old.betaBehemoth == 0 & current.betaBehemoth != 0)
 		{
 			vars.time0 = current.time + 2000;
@@ -685,6 +691,10 @@ split
 		if(settings["chapter7"] & old.datalog <= 520)
 		{
 			vars.chapter = true;
+		}
+		if(settings["chocoboSet"] & old.datalog <= 560 & current.datalog >= 570)
+		{
+			return true;
 		}
 		if(settings["midlightSet"] & old.midlight == 0 & current.midlight != 0)
 		{
