@@ -262,7 +262,7 @@ init
 	  if (component.GetType().Name == "TextComponent") {
 		if (settings["dodgeCountSet"] == true & vars.dodgeTextNum == -1) {
 			vars.comp_array[vars.arrNum] = component;
-			vars.comp_array[vars.arrNum].Settings.Text1 = "Failed Dodges:";
+			vars.comp_array[vars.arrNum].Settings.Text1 = "Cancels/Retries:";
 			vars.dodgeTextNum = vars.arrNum;
 			vars.arrNum++;
 			continue;
