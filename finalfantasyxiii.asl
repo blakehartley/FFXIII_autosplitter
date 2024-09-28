@@ -862,6 +862,7 @@ split
 			if(vars.vht == true & current.load == 0 & old.load == 1)
 			{
 				vars.vht = false;
+				vars.dodgeCount--;
 				return true;
 			}
 		}
